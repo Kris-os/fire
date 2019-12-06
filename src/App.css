@@ -1,0 +1,65 @@
+.App {
+  text-align: center;
+  background-color: #e0f9fe;
+  height: 100vh;
+  min-height: 100px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.App-chart {
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh; */
+}
+
+.App-header {
+  background-color: #9fedde;
+  min-height: 50px;
+  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: #3295a9;
+  text-align: left;
+  text-indent: 50px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.App-link {
+  color: #09d3ac;
+}
+
+.col-chart {
+  width: 60vh !important;
+}
+
+.col-inputs {
+  width: 40vh !important;
+}
+
+.container {
+  max-width: 100% !important;
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+}
+
+.my-col {
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh; */
+}
+
+.my-container {
+  margin: 0px;
+  /* width: 100vh; */
+}
+
+.my-row {
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
