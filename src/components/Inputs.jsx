@@ -65,5 +65,3 @@ class Inputs extends Component {
 }
 
 export default Inputs;
-
-AudioBufferSourceNode;
