@@ -3,31 +3,6 @@ import { Form, Col, Row } from "react-bootstrap";
 import NumberInput from "./NumberInput";
 
 class Inputs extends Component {
-  state = {
-    age: 0,
-    networth: 0
-  };
-
-  updateState = (id, value) => {
-    console.log("Event Handler Called", id);
-    if (id === "age") {
-      var ageTemp = value;
-    } else {
-      ageTemp = this.state.age;
-    }
-
-    if (id === "networth") {
-      var networthTemp = value;
-    } else {
-      networthTemp = this.state.networth;
-    }
-
-    this.setState({
-      age: ageTemp,
-      networth: networthTemp
-    });
-  };
-
   render() {
     return (
       <div>
@@ -41,7 +16,7 @@ class Inputs extends Component {
               <NumberInput
                 id="age"
                 placeholder="Age (years)"
-                updateState={this.updateState}
+                updateState={this.props.updateState}
               />
             </Col>
           </Form.Group>
@@ -54,7 +29,7 @@ class Inputs extends Component {
               <NumberInput
                 id="networth"
                 placeholder="Networth"
-                updateState={this.updateState}
+                updateState={this.props.updateState}
               />
             </Col>
           </Form.Group>
