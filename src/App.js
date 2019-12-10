@@ -11,8 +11,7 @@ class App extends React.Component {
     super();
     this.state = {
       age: 0,
-      networth: 0,
-      contacts: []
+      networth: 0
     };
   }
 
@@ -30,21 +29,32 @@ class App extends React.Component {
       networthTemp = this.state.networth;
     }
 
-    this.setState({
-      age: ageTemp,
-      networth: networthTemp
-    });
-
-    this.runCalcs();
+    this.setState(
+      {
+        age: ageTemp,
+        networth: networthTemp
+      },
+      this.runCalcs()
+    );
   };
 
   runCalcs() {
-    //want a POST request as this both gives data and gets back a response?
+    const baseUrl = "https://localhost:44302/Prospr";
+    const queryString = encodeQueryData(this.state);
+    const url = baseUrl.concat("?", queryString);
 
-    fetch("https://localhost:44302/Opul")
-      .then(res => res.json())
-      .then(data => {
-        this.setState({ contacts: data });
+    console.log("test2");
+    const response = fetch(url, {
+      credentials: "include",
+      mode: "cors"
+    });
+
+    response
+      .then(response => {
+        return response.json();
+      })
+      .then(test => {
+        console.log(test);
       });
   }
 
@@ -65,6 +75,13 @@ class App extends React.Component {
       </div>
     );
   }
+}
+
+function encodeQueryData(data) {
+  const ret = [];
+  for (let d in data)
+    ret.push(encodeURIComponent(d) + "=" + encodeURIComponent(data[d]));
+  return ret.join("&");
 }
 
 export default App;
