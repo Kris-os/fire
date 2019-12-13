@@ -34,11 +34,12 @@
 }
 
 .col-chart {
-  width: 60vh !important;
+  width: 100vh !important;
 }
 
 .col-inputs {
-  width: 40vh !important;
+  width: 500px !important;
+  max-width: 500px;
 }
 
 .container {

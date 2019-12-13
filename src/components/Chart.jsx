@@ -9,20 +9,16 @@ import {
   Legend
 } from "recharts";
 
-const data = [
-  {
-    value: 0,
-    time: 0
-  },
-  {
-    value: 100,
-    time: 1
-  },
-  {
-    value: 1000,
-    time: 2
-  }
-];
+// const data = [
+//   {
+//     value: 0,
+//     time: 0
+//   },
+//   {
+//     value: 100,
+//     time: 1
+//   }
+// ];
 
 export default class Example extends PureComponent {
   // jsfiddleUrl for testing default settings "https://jsfiddle.net/alidingling/xqjtetw0/";
@@ -30,15 +26,16 @@ export default class Example extends PureComponent {
   render() {
     return (
       <LineChart
-        width={500}
-        height={300}
-        data={data}
+        width={800}
+        height={600}
+        data={convertData(this.props.results.bestEstimateResults)}
         margin={{
           top: 5,
           right: 30,
           left: 20,
           bottom: 5
         }}
+        dot="false"
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="time" type="number" />
@@ -49,9 +46,23 @@ export default class Example extends PureComponent {
           type="monotone"
           dataKey="value"
           stroke="#8884d8"
-          activeDot={{ r: 8 }}
+          dot={false}
+          //activeDot={{ r: 8 }}
         />
       </LineChart>
     );
   }
+}
+
+function convertData(data) {
+  var output = [];
+  var i;
+  for (i = 0; i < data.length; i++) {
+    output.push({
+      value: data[i],
+      time: i
+    });
+  }
+
+  return output;
 }

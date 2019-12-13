@@ -11,7 +11,19 @@ class App extends React.Component {
     super();
     this.state = {
       age: 0,
-      networth: 0
+      networth: 0,
+      results: {
+        bestEstimateResults: [
+          10000,
+          100000,
+          500000,
+          490000,
+          480000,
+          360000,
+          100000,
+          0
+        ]
+      }
     };
   }
 
@@ -29,13 +41,11 @@ class App extends React.Component {
       networthTemp = this.state.networth;
     }
 
-    this.setState(
-      {
-        age: ageTemp,
-        networth: networthTemp
-      },
-      this.runCalcs()
-    );
+    this.setState({
+      age: ageTemp,
+      networth: networthTemp
+    });
+    this.runCalcs();
   };
 
   runCalcs() {
@@ -43,18 +53,14 @@ class App extends React.Component {
     const queryString = encodeQueryData(this.state);
     const url = baseUrl.concat("?", queryString);
 
-    console.log("test2");
     const response = fetch(url, {
       credentials: "include",
       mode: "cors"
-    });
-
-    response
-      .then(response => {
-        return response.json();
-      })
-      .then(test => {
-        console.log(test);
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        this.setState({ results: data });
       });
   }
 
@@ -68,7 +74,7 @@ class App extends React.Component {
               <Inputs updateState={this.updateState} />
             </Col>
             <Col className="my-col col-chart">
-              <Chart />
+              <Chart results={this.state.results} />
             </Col>
           </Row>
         </Container>
