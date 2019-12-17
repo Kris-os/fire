@@ -41,11 +41,15 @@ class App extends React.Component {
       networthTemp = this.state.networth;
     }
 
-    this.setState({
-      age: ageTemp,
-      networth: networthTemp
-    });
-    this.runCalcs();
+    this.setState(
+      {
+        age: ageTemp,
+        networth: networthTemp
+      },
+      () => {
+        this.runCalcs();
+      }
+    );
   };
 
   runCalcs() {
