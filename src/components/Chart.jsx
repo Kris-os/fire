@@ -6,9 +6,11 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend
+  Legend,
+  Label
 } from "recharts";
 
+// EXAMPLE DATA FORMAT
 // const data = [
 //   {
 //     value: 0,
@@ -38,8 +40,17 @@ export default class Example extends PureComponent {
         dot="false"
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="time" type="number" />
-        <YAxis />
+        <XAxis dataKey="time" type="number">
+          <Label value="Months" offset={0} position="insideBottom" />
+        </XAxis>
+        <YAxis>
+          <Label
+            value="Networth"
+            dy={40}
+            offset={-15}
+            position="insideTopLeft"
+          />
+        </YAxis>
         <Tooltip />
         <Legend />
         <Line
