@@ -12,6 +12,8 @@ class App extends React.Component {
     this.state = {
       age: 0,
       networth: 0,
+      expenditure: 0,
+      netEarnings: 0,
       results: {
         bestEstimateResults: [
           10000,
@@ -21,9 +23,9 @@ class App extends React.Component {
           480000,
           360000,
           100000,
-          0
-        ]
-      }
+          0,
+        ],
+      },
     };
   }
 
@@ -41,10 +43,24 @@ class App extends React.Component {
       networthTemp = this.state.networth;
     }
 
+    if (id === "expenditure") {
+      var expenditureTemp = value;
+    } else {
+      expenditureTemp = this.state.expenditure;
+    }
+
+    if (id === "netEarnings") {
+      var netEarningsTemp = value;
+    } else {
+      netEarningsTemp = this.state.netEarnings;
+    }
+
     this.setState(
       {
         age: ageTemp,
-        networth: networthTemp
+        networth: networthTemp,
+        expenditure: expenditureTemp,
+        netEarnings: netEarningsTemp,
       },
       () => {
         this.runCalcs();
@@ -59,10 +75,10 @@ class App extends React.Component {
 
     const response = fetch(url, {
       credentials: "include",
-      mode: "cors"
+      mode: "cors",
     })
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         console.log(data);
         this.setState({ results: data });
       });

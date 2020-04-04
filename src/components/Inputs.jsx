@@ -33,6 +33,32 @@ class Inputs extends Component {
               />
             </Col>
           </Form.Group>
+
+          <Form.Group as={Row} controlId="expenditure">
+            <Form.Label column sm={2}>
+              Expenditure
+            </Form.Label>
+            <Col sm={10}>
+              <NumberInput
+                id="expenditure"
+                placeholder="Expenditure"
+                updateState={this.props.updateState}
+              />
+            </Col>
+          </Form.Group>
+
+          <Form.Group as={Row} controlId="netEarnings">
+            <Form.Label column sm={2}>
+              Net Earnings
+            </Form.Label>
+            <Col sm={10}>
+              <NumberInput
+                id="netEarnings"
+                placeholder="Net Earnings"
+                updateState={this.props.updateState}
+              />
+            </Col>
+          </Form.Group>
         </Form>
       </div>
     );
