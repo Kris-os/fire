@@ -47,6 +47,11 @@
   height: calc(100vh - 100px);
 }
 
+.paddingTopAndBottom {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
 /* * {
   border: 1px solid red;
 } */

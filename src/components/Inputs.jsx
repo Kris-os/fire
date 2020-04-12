@@ -8,7 +8,7 @@ class Inputs extends Component {
       <div>
         <h4>The financial freedom calculator</h4>
         <Form>
-          <Row controlid="age">
+          <Row controlid="age" className="paddingTopAndBottom">
             <Col column sm={3}>
               Age
             </Col>
@@ -21,7 +21,7 @@ class Inputs extends Component {
             </Col>
           </Row>
 
-          <Row controlid="networth">
+          <Row controlid="networth" className="paddingTopAndBottom">
             <Col column sm={3}>
               Networth
             </Col>
@@ -34,9 +34,9 @@ class Inputs extends Component {
             </Col>
           </Row>
 
-          <Row controlid="expenditure">
+          <Row controlid="expenditure" className="paddingTopAndBottom">
             <Col column sm={3}>
-              Expenditure
+              Yearly expenditure
             </Col>
             <Col sm={9}>
               <NumberInput
@@ -47,9 +47,9 @@ class Inputs extends Component {
             </Col>
           </Row>
 
-          <Row controlid="netEarnings">
+          <Row controlid="netEarnings" className="paddingTopAndBottom">
             <Col column sm={3}>
-              Net Earnings
+              Yearly earnings after tax
             </Col>
             <Col sm={9}>
               <NumberInput

@@ -15,16 +15,13 @@ class App extends React.Component {
       expenditure: 0,
       netEarnings: 0,
       results: {
-        baseCaseResults: [
-          10000,
-          100000,
-          500000,
-          490000,
-          480000,
-          360000,
-          100000,
-          0,
-        ],
+        // baseCaseResults: [
+        //   10000,
+        //   100000,
+        //   100000,
+        //   0,
+        // ],
+        // daysUntilFinancialIndependence: 0,
       },
     };
   }
@@ -91,7 +88,7 @@ class App extends React.Component {
         <Container fluid className="my-container">
           <Row className="my-row">
             <Col className="inputs-col">
-              <Inputs updateState={this.updateState} />
+              <Inputs className="inputs" updateState={this.updateState} />
             </Col>
             <Col className="chart">
               <Chart results={this.state.results} />
