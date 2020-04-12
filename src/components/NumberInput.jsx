@@ -4,7 +4,7 @@ import { Form } from "react-bootstrap";
 
 class NumberInput extends Component {
   state = {
-    value: 0
+    value: 0,
   };
 
   onInputChange(event) {

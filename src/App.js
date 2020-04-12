@@ -15,7 +15,7 @@ class App extends React.Component {
       expenditure: 0,
       netEarnings: 0,
       results: {
-        bestEstimateResults: [
+        baseCaseResults: [
           10000,
           100000,
           500000,
@@ -88,12 +88,12 @@ class App extends React.Component {
     return (
       <div className="App">
         <Header />
-        <Container className="my-container">
+        <Container fluid className="my-container">
           <Row className="my-row">
-            <Col className="my-col col-inputs">
+            <Col className="inputs-col">
               <Inputs updateState={this.updateState} />
             </Col>
-            <Col className="my-col col-chart">
+            <Col className="chart">
               <Chart results={this.state.results} />
             </Col>
           </Row>
@@ -104,10 +104,10 @@ class App extends React.Component {
 }
 
 function encodeQueryData(data) {
-  const ret = [];
+  const output = [];
   for (let d in data)
-    ret.push(encodeURIComponent(d) + "=" + encodeURIComponent(data[d]));
-  return ret.join("&");
+    output.push(encodeURIComponent(d) + "=" + encodeURIComponent(data[d]));
+  return output.join("&");
 }
 
 export default App;

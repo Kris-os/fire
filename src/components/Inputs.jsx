@@ -6,59 +6,59 @@ class Inputs extends Component {
   render() {
     return (
       <div>
-        <h2>Inputs</h2>
+        <h4>The financial freedom calculator</h4>
         <Form>
-          <Form.Group as={Row} controlId="age">
-            <Form.Label column sm={2}>
+          <Row controlid="age">
+            <Col column sm={3}>
               Age
-            </Form.Label>
-            <Col sm={10}>
+            </Col>
+            <Col sm={9}>
               <NumberInput
                 id="age"
                 placeholder="Age (years)"
                 updateState={this.props.updateState}
               />
             </Col>
-          </Form.Group>
+          </Row>
 
-          <Form.Group as={Row} controlId="networth">
-            <Form.Label column sm={2}>
+          <Row controlid="networth">
+            <Col column sm={3}>
               Networth
-            </Form.Label>
-            <Col sm={10}>
+            </Col>
+            <Col sm={9}>
               <NumberInput
                 id="networth"
                 placeholder="Networth"
                 updateState={this.props.updateState}
               />
             </Col>
-          </Form.Group>
+          </Row>
 
-          <Form.Group as={Row} controlId="expenditure">
-            <Form.Label column sm={2}>
+          <Row controlid="expenditure">
+            <Col column sm={3}>
               Expenditure
-            </Form.Label>
-            <Col sm={10}>
+            </Col>
+            <Col sm={9}>
               <NumberInput
                 id="expenditure"
                 placeholder="Expenditure"
                 updateState={this.props.updateState}
               />
             </Col>
-          </Form.Group>
+          </Row>
 
-          <Form.Group as={Row} controlId="netEarnings">
-            <Form.Label column sm={2}>
+          <Row controlid="netEarnings">
+            <Col column sm={3}>
               Net Earnings
-            </Form.Label>
-            <Col sm={10}>
+            </Col>
+            <Col sm={9}>
               <NumberInput
                 id="netEarnings"
                 placeholder="Net Earnings"
                 updateState={this.props.updateState}
               />
             </Col>
-          </Form.Group>
+          </Row>
         </Form>
       </div>
     );
