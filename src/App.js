@@ -1,10 +1,10 @@
 import React from "react";
-import "./App.css";
 import Chart from "./components/Chart";
 import Inputs from "./components/Inputs";
 import Header from "./components/Header";
-import { Container, Row, Col } from "react-bootstrap";
+import { Card, Col, Container, Form, Row } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
 
 class App extends React.Component {
   constructor() {
@@ -85,13 +85,41 @@ class App extends React.Component {
     return (
       <div className="App">
         <Header />
-        <Container fluid className="my-container">
-          <Row className="my-row">
-            <Col className="inputs-col">
-              <Inputs className="inputs" updateState={this.updateState} />
+        <Container fluid>
+          <Row className="align-items-center">
+            <Col sm="4">
+              <Inputs
+                className="paddingTopAndBottomLarge"
+                updateState={this.updateState}
+              />
             </Col>
-            <Col className="chart">
-              <Chart results={this.state.results} />
+            <Col sm="auto" className="paddingTopAndBottomLarge">
+              {/* <Card style={{ width: "18rem" }}>
+                <Card.Body> */}
+              <Chart results={this.state.results} age={this.state.age} />
+              {/* </Card.Body>
+              </Card> */}
+              <Card style={{ width: "30rem" }}>
+                <Card.Body>
+                  <Card.Text>
+                    Projected financial freedom: [3 years, 2 weeks, 3 days].
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+              <Card style={{ width: "30rem" }}>
+                <Card.Body>
+                  <Card.Text>
+                    If you cut your expenditure by [x], your projected working
+                    lifetime is reduced by [3 years, 2 weeks, 3 days].
+                    <Form.Check
+                      className="paddingTopAndBottomSmall"
+                      type="checkbox"
+                      label="Add to chart"
+                      style={{ fontStyle: "italic" }}
+                    />
+                  </Card.Text>
+                </Card.Body>
+              </Card>
             </Col>
           </Row>
         </Container>

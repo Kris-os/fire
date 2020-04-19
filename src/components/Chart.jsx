@@ -8,6 +8,7 @@ import {
   Tooltip,
   Legend,
   Label,
+  ReferenceLine,
   ResponsiveContainer,
 } from "recharts";
 
@@ -28,54 +29,84 @@ export default class Example extends PureComponent {
 
   render() {
     return (
-      <ResponsiveContainer>
-        <LineChart
-          data={convertData(this.props.results.baseCaseResults)}
-          margin={{
-            top: 5,
-            right: 30,
-            left: 20,
-            bottom: 5,
-          }}
-          dot="false"
+      <LineChart
+        width={1200}
+        height={600}
+        data={convertData(this.props.results.baseCaseResults, this.props.age)}
+        margin={{
+          top: 5,
+          right: 30,
+          left: 20,
+          bottom: 5,
+        }}
+        dot="false"
+      >
+        {/* <CartesianGrid strokeDasharray="3 3" /> */}
+        <XAxis
+          dataKey="age"
+          type="number"
+          domain={[this.props.age]}
+          ticks={getTicks(this.props.age)}
         >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="time" type="number">
-            <Label value="Months" offset={0} position="insideBottom" />
-          </XAxis>
-          <YAxis>
-            <Label
-              value="Networth"
-              dy={40}
-              offset={-15}
-              position="insideTopLeft"
-            />
-          </YAxis>
-          <Tooltip />
-          <Legend />
-          <Line
-            type="monotone"
-            dataKey="value"
-            stroke="#8884d8"
-            dot={false}
-            //activeDot={{ r: 8 }}
+          <Label value="Age" offset={0} position="insideBottom" />
+        </XAxis>
+        <YAxis>
+          <Label
+            value="Networth"
+            dy={40}
+            offset={-15}
+            position="insideTopLeft"
           />
-        </LineChart>
-      </ResponsiveContainer>
+        </YAxis>
+        <Tooltip />
+        <Legend />
+        <ReferenceLine
+          x={
+            Number(this.props.results.daysUntilFinancialIndependence) / 365 +
+            Number(this.props.age)
+          }
+          stroke="#ffb7b2"
+          label=""
+        />
+        <Line
+          type="monotone"
+          dataKey="networth"
+          dot={false}
+          stroke="#ff9aa2"
+          strokeWidth={4}
+          //activeDot={{ r: 8 }}
+        />
+      </LineChart>
     );
   }
 }
 
-function convertData(data) {
+function convertData(data, startingAge) {
   var output = [];
   if (data == null) return output;
   var i;
   for (i = 0; i < data.length; i++) {
     output.push({
-      value: data[i],
-      time: i,
+      networth: data[i],
+      age: i / 12 + Number(startingAge),
     });
   }
 
+  return output;
+}
+
+function getTicks(age) {
+  var ageAsNumber = Number(age);
+  var output = [];
+  output[0] = Math.floor(ageAsNumber);
+  var runningAge = ageAsNumber + 1;
+  var i = 1;
+  while (runningAge < 91) {
+    if (Math.floor(runningAge) % 10 === 0) {
+      output[i] = Math.floor(runningAge);
+      i++;
+    }
+    runningAge++;
+  }
   return output;
 }

@@ -1,55 +1,38 @@
+@import url("https://fonts.googleapis.com/css?family=Baloo+Paaji+2");
+@import url("https://fonts.googleapis.com/css?family=Raleway");
+
 .App {
   text-align: center;
-  background-color: #e0f9fe;
-  height: 100vh;
+  background-color: #f5f5f5;
+  font-family: "Raleway";
+  min-height: 100vh;
 }
 
 .App-header {
-  background-color: #9fedde;
-  /* min-height: 50px; */
-  height: 100px;
+  background-color: #8ea3aa;
+  height: 80px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
   justify-content: center;
-  font-size: calc(50px);
-  color: #3295a9;
+  font-family: "Baloo Paaji 2";
+  font-size: 50px;
+  font-weight: 400;
+  color: #ffffff;
   text-align: left;
   text-indent: 50px;
   margin: 0px;
   padding: 0px;
 }
 
-.App-link {
-  color: #09d3ac;
+.paddingTopAndBottomSmall {
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
-.chart {
-  /* justify-content: center;
-  align-items: center; */
-  min-height: 600px;
-  min-width: 1000px;
-  height: 100% !important;
-  width: 100% !important;
-}
-
-.inputs-col {
-  max-width: 600px !important;
-  min-width: 350px;
-  justify-content: center;
-}
-
-.my-row {
-  height: 100%;
-}
-
-.my-container {
-  height: calc(100vh - 100px);
-}
-
-.paddingTopAndBottom {
-  padding-top: 3px;
-  padding-bottom: 3px;
+.paddingTopAndBottomLarge {
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 /* * {
