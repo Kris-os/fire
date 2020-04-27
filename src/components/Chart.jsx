@@ -29,54 +29,54 @@ export default class Example extends PureComponent {
 
   render() {
     return (
-      <LineChart
-        width={1200}
-        height={600}
-        data={convertData(this.props.results.baseCaseResults, this.props.age)}
-        margin={{
-          top: 5,
-          right: 30,
-          left: 20,
-          bottom: 5,
-        }}
-        dot="false"
-      >
-        {/* <CartesianGrid strokeDasharray="3 3" /> */}
-        <XAxis
-          dataKey="age"
-          type="number"
-          domain={[this.props.age]}
-          ticks={getTicks(this.props.age)}
+      <ResponsiveContainer>
+        <LineChart
+          data={convertData(this.props.results.baseCaseResults, this.props.age)}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5,
+          }}
+          dot="false"
         >
-          <Label value="Age" offset={0} position="insideBottom" />
-        </XAxis>
-        <YAxis>
-          <Label
-            value="Networth"
-            dy={40}
-            offset={-15}
-            position="insideTopLeft"
+          {/* <CartesianGrid strokeDasharray="3 3" /> */}
+          <XAxis
+            dataKey="age"
+            type="number"
+            domain={[this.props.age]}
+            ticks={getTicks(this.props.age)}
+          >
+            <Label value="Age" offset={0} position="insideBottom" />
+          </XAxis>
+          <YAxis>
+            <Label
+              value="Networth"
+              dy={40}
+              offset={-15}
+              position="insideTopLeft"
+            />
+          </YAxis>
+          <Tooltip />
+          <Legend />
+          <ReferenceLine
+            x={
+              Number(this.props.results.daysUntilFinancialIndependence) / 365 +
+              Number(this.props.age)
+            }
+            stroke="#ffb7b2"
+            label=""
           />
-        </YAxis>
-        <Tooltip />
-        <Legend />
-        <ReferenceLine
-          x={
-            Number(this.props.results.daysUntilFinancialIndependence) / 365 +
-            Number(this.props.age)
-          }
-          stroke="#ffb7b2"
-          label=""
-        />
-        <Line
-          type="monotone"
-          dataKey="networth"
-          dot={false}
-          stroke="#ff9aa2"
-          strokeWidth={4}
-          //activeDot={{ r: 8 }}
-        />
-      </LineChart>
+          <Line
+            type="monotone"
+            dataKey="networth"
+            dot={false}
+            stroke="#ff9aa2"
+            strokeWidth={4}
+            //activeDot={{ r: 8 }}
+          />
+        </LineChart>
+      </ResponsiveContainer>
     );
   }
 }

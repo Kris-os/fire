@@ -1,12 +1,12 @@
-import React from "react";
+import React, { Component } from "react";
 import Chart from "./components/Chart";
 import Inputs from "./components/Inputs";
 import Header from "./components/Header";
-import { Card, Col, Container, Form, Row } from "react-bootstrap";
+import { Card, CardDeck, Col, Container, Form, Row } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
-class App extends React.Component {
+class App extends Component {
   constructor() {
     super();
     this.state = {
@@ -23,6 +23,9 @@ class App extends React.Component {
         // ],
         // daysUntilFinancialIndependence: 0,
       },
+      finIndepYears: 0,
+      finIndepMonths: 0,
+      finIndepDays: 0,
     };
   }
 
@@ -79,6 +82,22 @@ class App extends React.Component {
         console.log(data);
         this.setState({ results: data });
       });
+
+    this.setFinIndepTimes();
+  }
+
+  setFinIndepTimes() {
+    var rollingNumDays = this.state.results.daysUntilFinancialIndependence;
+    var numYears = Math.floor(rollingNumDays / 365.25);
+    rollingNumDays = rollingNumDays % (numYears * 365.25);
+    var numMonths = Math.floor(rollingNumDays / 30.42);
+    rollingNumDays = rollingNumDays % (numMonths * 30.42);
+
+    this.setState({
+      finIndepYears: numYears,
+      finIndepMonths: numMonths,
+      finIndepDays: Math.floor(rollingNumDays),
+    });
   }
 
   render() {
@@ -93,33 +112,45 @@ class App extends React.Component {
                 updateState={this.updateState}
               />
             </Col>
-            <Col sm="auto" className="paddingTopAndBottomLarge">
+            <Col sm="8" className="paddingTopAndBottomLarge">
               {/* <Card style={{ width: "18rem" }}>
                 <Card.Body> */}
-              <Chart results={this.state.results} age={this.state.age} />
+              <div style={{ height: "33vw" }}>
+                <Chart results={this.state.results} age={this.state.age} />
+              </div>
               {/* </Card.Body>
               </Card> */}
-              <Card style={{ width: "30rem" }}>
-                <Card.Body>
-                  <Card.Text>
-                    Projected financial freedom: [3 years, 2 weeks, 3 days].
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-              <Card style={{ width: "30rem" }}>
-                <Card.Body>
-                  <Card.Text>
-                    If you cut your expenditure by [x], your projected working
-                    lifetime is reduced by [3 years, 2 weeks, 3 days].
-                    <Form.Check
-                      className="paddingTopAndBottomSmall"
-                      type="checkbox"
-                      label="Add to chart"
-                      style={{ fontStyle: "italic" }}
-                    />
-                  </Card.Text>
-                </Card.Body>
-              </Card>
+              <CardDeck>
+                <Card
+                  style={{ width: "30rem" }}
+                  className="marginTopAndBottomLarge"
+                >
+                  <Card.Body>
+                    <Card.Text>
+                      Projected financial freedom: {this.state.finIndepYears}{" "}
+                      years, {this.state.finIndepMonths} weeks,
+                      {this.state.finIndepDays} days.
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+                <Card
+                  className="marginTopAndBottomLarge"
+                  style={{ width: "30rem" }}
+                >
+                  <Card.Body>
+                    <Card.Text>
+                      If you cut your expenditure by [x], your projected working
+                      lifetime is reduced by [3 years, 2 weeks, 3 days].
+                      <Form.Check
+                        className="paddingTopAndBottomSmall"
+                        type="checkbox"
+                        label="Add to chart"
+                        style={{ fontStyle: "italic" }}
+                      />
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </CardDeck>
             </Col>
           </Row>
         </Container>
