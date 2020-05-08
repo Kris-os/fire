@@ -61,7 +61,8 @@ export default class Example extends PureComponent {
           <Legend />
           <ReferenceLine
             x={
-              Number(this.props.results.daysUntilFinancialIndependence) / 365 +
+              Number(this.props.results.daysUntilFinancialIndependence) /
+                365.25 +
               Number(this.props.age)
             }
             stroke="#ffb7b2"

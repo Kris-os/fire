@@ -13,11 +13,7 @@ class Inputs extends Component {
               Age
             </Col>
             <Col sm={8}>
-              <NumberInput
-                id="age"
-                placeholder="Age (years)"
-                updateState={this.props.updateState}
-              />
+              <NumberInput id="age" updateState={this.props.updateState} />
             </Col>
           </Row>
 
@@ -26,11 +22,7 @@ class Inputs extends Component {
               Networth
             </Col>
             <Col sm={8}>
-              <NumberInput
-                id="networth"
-                placeholder="Networth"
-                updateState={this.props.updateState}
-              />
+              <NumberInput id="networth" updateState={this.props.updateState} />
             </Col>
           </Row>
 
@@ -41,7 +33,6 @@ class Inputs extends Component {
             <Col sm={8}>
               <NumberInput
                 id="expenditure"
-                placeholder="Expenditure"
                 updateState={this.props.updateState}
               />
             </Col>
@@ -55,7 +46,22 @@ class Inputs extends Component {
               {" "}
               <NumberInput
                 id="netEarnings"
-                placeholder="Net Earnings"
+                updateState={this.props.updateState}
+              />
+            </Col>
+          </Row>
+
+          <Row
+            controlid="marginForErrorPlusDesiredInheritence"
+            className="paddingTopAndBottomSmall"
+          >
+            <Col column sm={4}>
+              Margin of safety
+            </Col>
+            <Col sm={8}>
+              {" "}
+              <NumberInput
+                id="marginForErrorPlusDesiredInheritence"
                 updateState={this.props.updateState}
               />
             </Col>

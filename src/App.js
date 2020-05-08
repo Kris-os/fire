@@ -14,6 +14,7 @@ class App extends Component {
       networth: 0,
       expenditure: 0,
       netEarnings: 0,
+      marginOfSafety: 0,
       results: {
         // baseCaseResults: [
         //   10000,
@@ -22,10 +23,8 @@ class App extends Component {
         //   0,
         // ],
         // daysUntilFinancialIndependence: 0,
+        yearsMonthsDays1: [0, 0, 0],
       },
-      finIndepYears: 0,
-      finIndepMonths: 0,
-      finIndepDays: 0,
     };
   }
 
@@ -55,12 +54,19 @@ class App extends Component {
       netEarningsTemp = this.state.netEarnings;
     }
 
+    if (id === "marginForErrorPlusDesiredInheritence") {
+      var marginOfSafetyTemp = value;
+    } else {
+      marginOfSafetyTemp = this.state.marginOfSafety;
+    }
+
     this.setState(
       {
         age: ageTemp,
         networth: networthTemp,
         expenditure: expenditureTemp,
         netEarnings: netEarningsTemp,
+        marginForErrorPlusDesiredInheritence: marginOfSafetyTemp,
       },
       () => {
         this.runCalcs();
@@ -82,22 +88,6 @@ class App extends Component {
         console.log(data);
         this.setState({ results: data });
       });
-
-    this.setFinIndepTimes();
-  }
-
-  setFinIndepTimes() {
-    var rollingNumDays = this.state.results.daysUntilFinancialIndependence;
-    var numYears = Math.floor(rollingNumDays / 365.25);
-    rollingNumDays = rollingNumDays % (numYears * 365.25);
-    var numMonths = Math.floor(rollingNumDays / 30.42);
-    rollingNumDays = rollingNumDays % (numMonths * 30.42);
-
-    this.setState({
-      finIndepYears: numYears,
-      finIndepMonths: numMonths,
-      finIndepDays: Math.floor(rollingNumDays),
-    });
   }
 
   render() {
@@ -127,9 +117,10 @@ class App extends Component {
                 >
                   <Card.Body>
                     <Card.Text>
-                      Projected financial freedom: {this.state.finIndepYears}{" "}
-                      years, {this.state.finIndepMonths} weeks,
-                      {this.state.finIndepDays} days.
+                      Projected financial freedom:{" "}
+                      {this.state.results.yearsMonthsDays1[0]} years,{" "}
+                      {this.state.results.yearsMonthsDays1[1]} months,{" "}
+                      {this.state.results.yearsMonthsDays1[2]} days.
                     </Card.Text>
                   </Card.Body>
                 </Card>
@@ -139,8 +130,9 @@ class App extends Component {
                 >
                   <Card.Body>
                     <Card.Text>
-                      If you cut your expenditure by [x], your projected working
-                      lifetime is reduced by [3 years, 2 weeks, 3 days].
+                      If you cut your expenditure by [add input], your projected
+                      working lifetime is reduced by [3] years, [2] months, [3]
+                      days.
                       <Form.Check
                         className="paddingTopAndBottomSmall"
                         type="checkbox"
