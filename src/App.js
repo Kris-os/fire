@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Chart from "./components/Chart";
 import Inputs from "./components/Inputs";
 import Header from "./components/Header";
+import NumberInput from "./components/NumberInput";
 import { Card, CardDeck, Col, Container, Form, Row } from "react-bootstrap";
 import "./custom.scss";
 import "./App.css";
@@ -10,11 +11,15 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      age: 0,
-      networth: 0,
-      expenditure: 0,
-      netEarnings: 0,
-      marginOfSafety: 0,
+      inputsDictionary: {
+        age: 0,
+        networth: 0,
+        expenditure: 0,
+        netEarnings: 0,
+        marginOfSafety: 0,
+        lowerSpend: 0,
+        oneOffPurchase: 0,
+      },
       results: {
         // baseCaseResults: [
         //   10000,
@@ -25,49 +30,17 @@ class App extends Component {
         // daysUntilFinancialIndependence: 0,
         yearsMonthsDays1: [0, 0, 0],
         yearsMonthsDays2: [0, 0, 0],
+        yearsMonthsDays3: [0, 0, 0],
       },
     };
   }
 
   updateState = (id, value) => {
-    console.log("Event Handler Called", id);
-    if (id === "age") {
-      var ageTemp = value;
-    } else {
-      ageTemp = this.state.age;
-    }
-
-    if (id === "networth") {
-      var networthTemp = value;
-    } else {
-      networthTemp = this.state.networth;
-    }
-
-    if (id === "expenditure") {
-      var expenditureTemp = value;
-    } else {
-      expenditureTemp = this.state.expenditure;
-    }
-
-    if (id === "netEarnings") {
-      var netEarningsTemp = value;
-    } else {
-      netEarningsTemp = this.state.netEarnings;
-    }
-
-    if (id === "marginOfSafety") {
-      var marginOfSafetyTemp = value;
-    } else {
-      marginOfSafetyTemp = this.state.marginOfSafety;
-    }
-
+    var inputsDictionaryNew = this.state.inputsDictionary;
+    inputsDictionaryNew[id] = value;
     this.setState(
       {
-        age: ageTemp,
-        networth: networthTemp,
-        expenditure: expenditureTemp,
-        netEarnings: netEarningsTemp,
-        marginOfSafety: marginOfSafetyTemp,
+        inputsDictionary: inputsDictionaryNew,
       },
       () => {
         this.runCalcs();
@@ -77,7 +50,7 @@ class App extends Component {
 
   runCalcs() {
     const baseUrl = "https://localhost:44302/Prospr";
-    const queryString = encodeQueryData(this.state);
+    const queryString = encodeQueryData(this.state.inputsDictionary);
     const url = baseUrl.concat("?", queryString);
 
     const response = fetch(url, {
@@ -108,7 +81,10 @@ class App extends Component {
                 Projected net-worth over lifetime
               </h3>
               <div style={{ height: "30vw" }}>
-                <Chart results={this.state.results} age={this.state.age} />
+                <Chart
+                  results={this.state.results}
+                  age={this.state.inputsDictionary.age}
+                />
               </div>
               <CardDeck>
                 <Card
@@ -148,8 +124,12 @@ class App extends Component {
                   <Card.Body>
                     <Card.Text>
                       <h4>Impact of reduction in lifestyle</h4>
-                      Saving an extra <text className="bold">[50]</text> a month
-                      cuts working lifetime by:
+                      Cutting back by{" "}
+                      <NumberInput
+                        id="lowerSpend"
+                        updateState={this.updateState}
+                      />{" "}
+                      a month cuts working lifetime by:
                       <div>{"\n"}</div>
                       <text className="bold">
                         {this.state.results.yearsMonthsDays2[0]}
@@ -180,19 +160,22 @@ class App extends Component {
                   <Card.Body>
                     <Card.Text>
                       <h4>One-off purchase</h4>A one-off purchase of{" "}
-                      <text className="bold">[10,000]</text> increases working
-                      lifetime by
+                      <NumberInput
+                        id="oneOffPurchase"
+                        updateState={this.updateState}
+                      />
+                      increases working lifetime by
                       <div>{"\n"}</div>
                       <text className="bold">
-                        {this.state.results.yearsMonthsDays2[0]}
+                        {this.state.results.yearsMonthsDays3[0]}
                       </text>{" "}
                       years&#160;&#160;
                       <text className="bold">
-                        {this.state.results.yearsMonthsDays2[1]}
+                        {this.state.results.yearsMonthsDays3[1]}
                       </text>{" "}
                       months&#160;&#160;
                       <text className="bold">
-                        {this.state.results.yearsMonthsDays2[2]}
+                        {this.state.results.yearsMonthsDays3[2]}
                       </text>{" "}
                       days
                     </Card.Text>

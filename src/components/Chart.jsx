@@ -61,6 +61,28 @@ export default class Example extends PureComponent {
           <Legend />
 
           <ReferenceLine y={0} stroke="#666666" label="" />
+
+          <Line
+            name="One-off purchase"
+            type="monotone"
+            dataKey="oneOffPurchaseResults"
+            dot={false}
+            stroke="#c7ceea"
+            strokeWidth={4}
+            //activeDot={{ r: 8 }}
+          />
+          <ReferenceLine
+            x={
+              Number(
+                this.props.results.oneOffPurchaseDaysUntilFinancialIndependence
+              ) /
+                365.25 +
+              Number(this.props.age)
+            }
+            stroke="#c7ceea"
+            label=""
+          />
+
           <Line
             name="Lower monthly spend"
             type="monotone"
@@ -110,11 +132,12 @@ function convertData(data, startingAge) {
   return convertDataArray(
     data.baseCaseResults,
     data.lowerMonthlySpendResults,
+    data.oneOffPurchaseResults,
     startingAge
   );
 }
 
-function convertDataArray(dataArray1, dataArray2, startingAge) {
+function convertDataArray(dataArray1, dataArray2, dataArray3, startingAge) {
   var output = [];
   if (dataArray1 == null) return output;
   var i;
@@ -122,6 +145,7 @@ function convertDataArray(dataArray1, dataArray2, startingAge) {
     output.push({
       networth: dataArray1[i],
       lowerMonthlySpendResults: dataArray2[i],
+      oneOffPurchaseResults: dataArray3[i],
       age: i / 12 + Number(startingAge),
     });
   }
