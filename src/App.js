@@ -3,7 +3,7 @@ import Chart from "./components/Chart";
 import Inputs from "./components/Inputs";
 import Header from "./components/Header";
 import { Card, CardDeck, Col, Container, Form, Row } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "./custom.scss";
 import "./App.css";
 
 class App extends Component {
@@ -24,6 +24,7 @@ class App extends Component {
         // ],
         // daysUntilFinancialIndependence: 0,
         yearsMonthsDays1: [0, 0, 0],
+        yearsMonthsDays2: [0, 0, 0],
       },
     };
   }
@@ -54,7 +55,7 @@ class App extends Component {
       netEarningsTemp = this.state.netEarnings;
     }
 
-    if (id === "marginForErrorPlusDesiredInheritence") {
+    if (id === "marginOfSafety") {
       var marginOfSafetyTemp = value;
     } else {
       marginOfSafetyTemp = this.state.marginOfSafety;
@@ -66,7 +67,7 @@ class App extends Component {
         networth: networthTemp,
         expenditure: expenditureTemp,
         netEarnings: netEarningsTemp,
-        marginForErrorPlusDesiredInheritence: marginOfSafetyTemp,
+        marginOfSafety: marginOfSafetyTemp,
       },
       () => {
         this.runCalcs();
@@ -96,49 +97,130 @@ class App extends Component {
         <Header />
         <Container fluid>
           <Row className="align-items-center">
-            <Col sm="4">
+            <Col md="4" className="padding30">
               <Inputs
                 className="paddingTopAndBottomLarge"
                 updateState={this.updateState}
               />
             </Col>
-            <Col sm="8" className="paddingTopAndBottomLarge">
-              {/* <Card style={{ width: "18rem" }}>
-                <Card.Body> */}
-              <div style={{ height: "33vw" }}>
+            <Col md="8" className="padding30">
+              <h3 className="paddingTopAndBottomLarge">
+                Projected net-worth over lifetime
+              </h3>
+              <div style={{ height: "30vw" }}>
                 <Chart results={this.state.results} age={this.state.age} />
               </div>
-              {/* </Card.Body>
-              </Card> */}
               <CardDeck>
                 <Card
-                  style={{ width: "30rem" }}
-                  className="marginTopAndBottomLarge"
+                  style={{ minWidth: "300px" }}
+                  className="marginTopAndBottomLarge border-3"
+                  border="pink"
                 >
                   <Card.Body>
                     <Card.Text>
-                      Projected financial freedom:{" "}
-                      {this.state.results.yearsMonthsDays1[0]} years,{" "}
-                      {this.state.results.yearsMonthsDays1[1]} months,{" "}
-                      {this.state.results.yearsMonthsDays1[2]} days.
+                      <h4>
+                        Projected financial freedom - Age&#160;
+                        <text className="bold">
+                          {this.state.results.baseCaseFinancialFreedomAge}
+                        </text>
+                      </h4>
+                      <div>{"\n"}</div>
+                      <text className="bold">
+                        {this.state.results.yearsMonthsDays1[0]}{" "}
+                      </text>
+                      years&#160;&#160;
+                      <text className="bold">
+                        {this.state.results.yearsMonthsDays1[1]}{" "}
+                      </text>
+                      months&#160;&#160;
+                      <text className="bold">
+                        {this.state.results.yearsMonthsDays1[2]}{" "}
+                      </text>{" "}
+                      days
                     </Card.Text>
                   </Card.Body>
                 </Card>
                 <Card
-                  className="marginTopAndBottomLarge"
-                  style={{ width: "30rem" }}
+                  className="marginTopAndBottomLarge border-3"
+                  style={{ minWidth: "300px" }}
+                  border="green"
                 >
                   <Card.Body>
                     <Card.Text>
-                      If you cut your expenditure by [add input], your projected
-                      working lifetime is reduced by [3] years, [2] months, [3]
-                      days.
-                      <Form.Check
+                      <h4>Impact of reduction in lifestyle</h4>
+                      Saving an extra <text className="bold">[50]</text> a month
+                      cuts working lifetime by:
+                      <div>{"\n"}</div>
+                      <text className="bold">
+                        {this.state.results.yearsMonthsDays2[0]}
+                      </text>{" "}
+                      years&#160;&#160;
+                      <text className="bold">
+                        {this.state.results.yearsMonthsDays2[1]}
+                      </text>{" "}
+                      months&#160;&#160;
+                      <text className="bold">
+                        {this.state.results.yearsMonthsDays2[2]}
+                      </text>{" "}
+                      days
+                      {/* <Form.Check
                         className="paddingTopAndBottomSmall"
                         type="checkbox"
                         label="Add to chart"
                         style={{ fontStyle: "italic" }}
-                      />
+                      /> */}
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+                <Card
+                  className="marginTopAndBottomLarge border-3"
+                  style={{ minWidth: "300px" }}
+                  border="blue"
+                >
+                  <Card.Body>
+                    <Card.Text>
+                      <h4>One-off purchase</h4>A one-off purchase of{" "}
+                      <text className="bold">[10,000]</text> increases working
+                      lifetime by
+                      <div>{"\n"}</div>
+                      <text className="bold">
+                        {this.state.results.yearsMonthsDays2[0]}
+                      </text>{" "}
+                      years&#160;&#160;
+                      <text className="bold">
+                        {this.state.results.yearsMonthsDays2[1]}
+                      </text>{" "}
+                      months&#160;&#160;
+                      <text className="bold">
+                        {this.state.results.yearsMonthsDays2[2]}
+                      </text>{" "}
+                      days
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+
+                <Card
+                  className="marginTopAndBottomLarge border-3"
+                  style={{ minWidth: "300px" }}
+                >
+                  <Card.Body>
+                    <Card.Text>
+                      <h4>Getting a head start</h4>2 years of saving an extra{" "}
+                      <text className="bold">200</text> a month reduces working
+                      lifetime by
+                      <div>{"\n"}</div>
+                      <text className="bold">
+                        {this.state.results.yearsMonthsDays2[0]}
+                      </text>{" "}
+                      years&#160;&#160;
+                      <text className="bold">
+                        {this.state.results.yearsMonthsDays2[1]}
+                      </text>{" "}
+                      months&#160;&#160;
+                      <text className="bold">
+                        {this.state.results.yearsMonthsDays2[2]}
+                      </text>{" "}
+                      days
                     </Card.Text>
                   </Card.Body>
                 </Card>

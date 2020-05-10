@@ -31,7 +31,7 @@ export default class Example extends PureComponent {
     return (
       <ResponsiveContainer>
         <LineChart
-          data={convertData(this.props.results.baseCaseResults, this.props.age)}
+          data={convertData(this.props.results, this.props.age)}
           margin={{
             top: 5,
             right: 30,
@@ -51,14 +51,46 @@ export default class Example extends PureComponent {
           </XAxis>
           <YAxis>
             <Label
-              value="Networth"
+              value="Net-worth"
               dy={40}
-              offset={-15}
+              offset={-20}
               position="insideTopLeft"
             />
           </YAxis>
           <Tooltip />
           <Legend />
+
+          <ReferenceLine y={0} stroke="#666666" label="" />
+          <Line
+            name="Lower monthly spend"
+            type="monotone"
+            dataKey="lowerMonthlySpendResults"
+            dot={false}
+            stroke="#75c2a6"
+            strokeWidth={4}
+            //activeDot={{ r: 8 }}
+          />
+          <ReferenceLine
+            x={
+              Number(
+                this.props.results
+                  .lowerMonthlySpendDaysUntilFinancialIndependence
+              ) /
+                365.25 +
+              Number(this.props.age)
+            }
+            stroke="#75c2a6"
+            label=""
+          />
+          <Line
+            name="Base case"
+            type="monotone"
+            dataKey="networth"
+            dot={false}
+            stroke="#ff9aa2"
+            strokeWidth={4}
+            //activeDot={{ r: 8 }}
+          />
           <ReferenceLine
             x={
               Number(this.props.results.daysUntilFinancialIndependence) /
@@ -68,14 +100,6 @@ export default class Example extends PureComponent {
             stroke="#ffb7b2"
             label=""
           />
-          <Line
-            type="monotone"
-            dataKey="networth"
-            dot={false}
-            stroke="#ff9aa2"
-            strokeWidth={4}
-            //activeDot={{ r: 8 }}
-          />
         </LineChart>
       </ResponsiveContainer>
     );
@@ -83,12 +107,21 @@ export default class Example extends PureComponent {
 }
 
 function convertData(data, startingAge) {
+  return convertDataArray(
+    data.baseCaseResults,
+    data.lowerMonthlySpendResults,
+    startingAge
+  );
+}
+
+function convertDataArray(dataArray1, dataArray2, startingAge) {
   var output = [];
-  if (data == null) return output;
+  if (dataArray1 == null) return output;
   var i;
-  for (i = 0; i < data.length; i++) {
+  for (i = 0; i < dataArray1.length; i++) {
     output.push({
-      networth: data[i],
+      networth: dataArray1[i],
+      lowerMonthlySpendResults: dataArray2[i],
       age: i / 12 + Number(startingAge),
     });
   }
