@@ -49,13 +49,17 @@ class App extends Component {
   };
 
   runCalcs() {
-    const baseUrl = "https://localhost:44302/Prospr";
-    const queryString = encodeQueryData(this.state.inputsDictionary);
-    const url = baseUrl.concat("?", queryString);
+    const baseUrl =
+      "https://opulazurefunction.azurewebsites.net/api/OpulFunction?code=";
+    //const queryString = encodeQueryData(this.state.inputsDictionary);
+    const url = baseUrl.concat(process.env.REACT_APP_API_KEY);
 
     const response = fetch(url, {
-      credentials: "include",
-      mode: "cors",
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+      body: JSON.stringify(this.state.inputsDictionary),
     })
       .then((response) => response.json())
       .then((data) => {
