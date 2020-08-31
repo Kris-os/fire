@@ -54,6 +54,19 @@ class Inputs extends Component {
 
           <Row className="paddingTopAndBottomSmall">
             <Col column sm={6}>
+              Inheritance to leave behind
+            </Col>
+            <Col sm={6}>
+              {" "}
+              <NumberInput
+                id="inheritanceToLeaveBehind"
+                updateState={this.props.updateState}
+              />
+            </Col>
+          </Row>
+
+          <Row className="paddingTopAndBottomSmall">
+            <Col column sm={6}>
               Margin of safety
             </Col>
             <Col sm={6}>

@@ -15,6 +15,7 @@ class App extends Component {
         age: 0,
         networth: 0,
         expenditure: 0,
+        inheritanceToLeaveBehind: 0,
         netEarnings: 0,
         marginOfSafety: 0,
         lowerSpend: 0,
