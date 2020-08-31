@@ -6,8 +6,7 @@ class Header extends Component {
     return (
       <div>
         <header className="App-header">
-          Opul - the financial freedom model{" "}
-          <span style={{ fontStyle: "italic" }}>test</span> test test test test
+          Opul - the financial freedom models
         </header>
       </div>
     );
