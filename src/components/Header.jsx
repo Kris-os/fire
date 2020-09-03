@@ -1,12 +1,6 @@
 import React, { Component } from "react";
-import {
-  Button,
-  Form,
-  FormControl,
-  Nav,
-  Navbar,
-  NavDropdown,
-} from "react-bootstrap";
+import { Nav, Navbar } from "react-bootstrap";
+import OpulIcon from "../Images/OpulIcon.png";
 
 class Header extends Component {
   state = {};
@@ -17,12 +11,11 @@ class Header extends Component {
           <Navbar.Brand href="#home">
             <img
               alt=""
-              src="/OpulIcon.png"
-              width="70"
+              src={OpulIcon}
+              width="140"
               height="70"
               className="d-inline-block align-top"
-            />{" "}
-            pul&nbsp;
+            />
           </Navbar.Brand>
           {/* //<Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
           <Navbar.Collapse id="basic-navbar-nav">
