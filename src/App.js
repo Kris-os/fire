@@ -3,7 +3,7 @@ import Chart from "./components/Chart";
 import Inputs from "./components/Inputs";
 import Header from "./components/Header";
 import NumberInput from "./components/NumberInput";
-import { Card, CardDeck, Col, Container, Form, Row } from "react-bootstrap";
+import { Card, CardDeck, Col, Container, Row } from "react-bootstrap";
 import "./custom.scss";
 import "./App.css";
 

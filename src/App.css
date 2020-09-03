@@ -8,7 +8,7 @@
   min-height: 100vh;
 }
 
-.App-header {
+.App-header-old {
   background-color: #8ea3aa;
   height: 90px;
   display: flex;
@@ -31,6 +31,20 @@
 
 .bold {
   font-weight: bold;
+}
+
+.navbar {
+  height: 90px;
+  font-family: "Baloo Paaji 2";
+  font-size: 40px;
+  font-weight: 400;
+}
+
+.navbar-brand {
+  color: #ffffff !important;
+  font-family: "Baloo Paaji 2";
+  font-size: 50px;
+  font-weight: 400;
 }
 
 .paddingTopAndBottomSmall {
