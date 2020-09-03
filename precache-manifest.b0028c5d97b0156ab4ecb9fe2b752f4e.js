@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "657b2fdaf514aec769d9db9ff70923cd",
+    "revision": "db531cb81bb5e350ffc8048fc2961832",
     "url": "/fire/index.html"
   },
   {
