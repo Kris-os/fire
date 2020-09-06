@@ -21,7 +21,7 @@ class Header extends Component {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
               <Nav.Link href="#home">Model&nbsp;</Nav.Link>
-              <Nav.Link href="#link">Blog&nbsp;</Nav.Link>
+              <Nav.Link href="#link">About&nbsp;</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>

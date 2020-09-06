@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import NumericInput from "react-numeric-input";
 import { Form } from "react-bootstrap";
 
 class NumberInput extends Component {

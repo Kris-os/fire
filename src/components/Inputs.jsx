@@ -64,15 +64,19 @@ class Inputs extends Component {
               />
             </Col>
           </Row>
+        </Form>
 
+        <br></br>
+        <h3>Assumptions</h3>
+        <br></br>
+        <Form>
           <Row className="paddingTopAndBottomSmall">
             <Col column sm={6}>
-              Margin of safety
+              Investment return above inflation (% pa)
             </Col>
             <Col sm={6}>
-              {" "}
               <NumberInput
-                id="marginOfSafety"
+                id="returnAboveInflationAssumption"
                 updateState={this.props.updateState}
               />
             </Col>
