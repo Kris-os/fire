@@ -8,7 +8,6 @@ class NumberInput extends Component {
   };
 
   onInputChange(event) {
-    this.setState({ value: event.target.value });
     this.props.updateState(this.props.id, event.target.value);
   }
 
