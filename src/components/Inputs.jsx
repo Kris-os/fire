@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Form, Col, Row } from "react-bootstrap";
 import NumberInput from "./NumberInput";
-import NumberInputNew from "./NumberInputNew";
 
 class Inputs extends Component {
   render() {
