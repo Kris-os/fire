@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Form, Col, Row } from "react-bootstrap";
 import NumberInput from "./NumberInput";
+import NumberInputNew from "./NumberInputNew";
 
 class Inputs extends Component {
   render() {
@@ -14,7 +15,12 @@ class Inputs extends Component {
               Age
             </Col>
             <Col sm={6}>
-              <NumberInput id="age" updateState={this.props.updateState} />
+              <NumberInput
+                id="age"
+                updateState={this.props.updateState}
+                min={0}
+                max={90}
+              />
             </Col>
           </Row>
 
@@ -35,6 +41,7 @@ class Inputs extends Component {
               <NumberInput
                 id="expenditure"
                 updateState={this.props.updateState}
+                min={0}
               />
             </Col>
           </Row>
@@ -44,10 +51,10 @@ class Inputs extends Component {
               Annual net earnings
             </Col>
             <Col sm={6}>
-              {" "}
               <NumberInput
                 id="netEarnings"
                 updateState={this.props.updateState}
+                min={0}
               />
             </Col>
           </Row>
@@ -57,10 +64,10 @@ class Inputs extends Component {
               Inheritance to leave behind
             </Col>
             <Col sm={6}>
-              {" "}
               <NumberInput
                 id="inheritanceToLeaveBehind"
                 updateState={this.props.updateState}
+                min={0}
               />
             </Col>
           </Row>
@@ -78,6 +85,11 @@ class Inputs extends Component {
               <NumberInput
                 id="returnAboveInflationAssumption"
                 updateState={this.props.updateState}
+                min={0}
+                max={8}
+                precision={1}
+                step={0.1}
+                initialValue={4}
               />
             </Col>
           </Row>

@@ -4,16 +4,30 @@ import { Form } from "react-bootstrap";
 
 class NumberInput extends Component {
   state = {
-    value: 0,
+    value: this.props.initialValue,
   };
 
   onInputChange(event) {
-    this.props.updateState(this.props.id, event.target.value);
+    var num = event;
+    if (num != null) num = num.toFixed(this.props.precision);
+    this.setState({ value: num });
+    this.props.updateState(this.props.id, num);
   }
 
   render() {
     return (
-      <Form.Control type="number" onChange={this.onInputChange.bind(this)} />
+      <NumericInput
+        className="form-control"
+        id={this.props.id}
+        min={this.props.min}
+        max={this.props.max}
+        onChange={this.onInputChange.bind(this)}
+        precision={this.props.precision}
+        value={this.state.value}
+        step={this.props.step}
+        style={false}
+        snap
+      />
     );
   }
 }
