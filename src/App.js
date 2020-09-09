@@ -50,9 +50,10 @@ class App extends Component {
   };
 
   runCalcs() {
-    //const baseUrl = "https://opulazurefunction.azurewebsites.net/api/OpulFunction?code=";
-    const url = "http://localhost:7071/api/OpulFunction";
-    //const url = baseUrl.concat(process.env.REACT_APP_API_KEY);
+    const baseUrl =
+      "https://opulazurefunction.azurewebsites.net/api/OpulFunction?code=";
+    //const url = "http://localhost:7071/api/OpulFunction";
+    const url = baseUrl.concat(process.env.REACT_APP_API_KEY);
 
     const response = fetch(url, {
       method: "POST",
