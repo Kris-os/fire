@@ -18,7 +18,7 @@ class Inputs extends Component {
                 id="age"
                 updateState={this.props.updateState}
                 min={0}
-                max={90}
+                max={89}
               />
             </Col>
           </Row>

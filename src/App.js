@@ -6,6 +6,7 @@ import NumberInput from "./components/NumberInput";
 import { Card, CardDeck, Col, Container, Row } from "react-bootstrap";
 import "./custom.scss";
 import "./App.css";
+import { intialReturnAssumption } from "./Constants.js";
 
 class App extends Component {
   constructor() {
@@ -19,7 +20,7 @@ class App extends Component {
         netEarnings: 0,
         networth: 0,
         oneOffPurchase: 0,
-        returnAboveInflationAssumption: 0,
+        returnAboveInflationAssumption: intialReturnAssumption,
       },
       results: {
         // baseCaseResults: [
@@ -74,11 +75,16 @@ class App extends Component {
       <div className="App">
         <Header />
         <Container fluid>
-          <Row className="align-items-center">
+          <Row className="align-items-start">
             <Col md="4" className="padding30">
+              <h4>
+                A financial model designed to help you with the big questions.
+              </h4>
+
               <Inputs
                 className="paddingTopAndBottomLarge"
                 updateState={this.updateState}
+                intialReturnAssumption={intialReturnAssumption}
               />
             </Col>
             <Col md="8" className="padding30">

@@ -10,6 +10,8 @@ class NumberInput extends Component {
   onInputChange(event) {
     var num = event;
     if (num != null) num = num.toFixed(this.props.precision);
+    if (num != null && num > this.props.max) num = this.props.max;
+    if (num != null && num < this.props.min) num = this.props.min;
     this.setState({ value: num });
     this.props.updateState(this.props.id, num);
   }
