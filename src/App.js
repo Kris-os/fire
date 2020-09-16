@@ -33,6 +33,7 @@ class App extends Component {
         yearsMonthsDays1: [0, 0, 0],
         yearsMonthsDays2: [0, 0, 0],
         yearsMonthsDays3: [0, 0, 0],
+        yearsMonthsDays4: [0, 0, 0],
       },
     };
   }
@@ -53,7 +54,7 @@ class App extends Component {
   runCalcs() {
     const baseUrl =
       "https://opulazurefunction.azurewebsites.net/api/OpulFunction?code=";
-    //const url = "http://localhost:7071/api/OpulFunction";
+    // const url = "http://localhost:7071/api/OpulFunction";
     const url = baseUrl.concat(process.env.REACT_APP_API_KEY);
 
     const response = fetch(url, {
@@ -193,7 +194,7 @@ class App extends Component {
                   </Card.Body>
                 </Card>
 
-                <Card
+                {/* <Card
                   className="marginTopAndBottomLarge border-3"
                   style={{ minWidth: "300px" }}
                 >
@@ -204,20 +205,20 @@ class App extends Component {
                       lifetime by
                       <div>{"\n"}</div>
                       <text className="bold">
-                        {this.state.results.yearsMonthsDays2[0]}
+                        {this.state.results.yearsMonthsDays4[0]}
                       </text>{" "}
                       years&#160;&#160;
                       <text className="bold">
-                        {this.state.results.yearsMonthsDays2[1]}
+                        {this.state.results.yearsMonthsDays4[1]}
                       </text>{" "}
                       months&#160;&#160;
                       <text className="bold">
-                        {this.state.results.yearsMonthsDays2[2]}
+                        {this.state.results.yearsMonthsDays4[2]}
                       </text>{" "}
                       days
                     </Card.Text>
                   </Card.Body>
-                </Card>
+                </Card> */}
               </CardDeck>
             </Col>
           </Row>

@@ -3,6 +3,10 @@ import { Form, Col, Row } from "react-bootstrap";
 import NumberInput from "./NumberInput";
 
 class Inputs extends Component {
+  handleSubmit = (event) => {
+    event.preventDefault();
+  };
+
   render() {
     return (
       <div className={"inputs " + this.props.className}>
@@ -75,7 +79,7 @@ class Inputs extends Component {
         <br></br>
         <h3>Assumptions</h3>
         <br></br>
-        <Form>
+        <Form onSubmit={this.handleSubmit}>
           <Row className="paddingTopAndBottomSmall">
             <Col column sm={6}>
               Investment return above inflation (% pa)
