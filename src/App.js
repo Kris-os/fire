@@ -3,6 +3,7 @@ import Chart from "./components/Chart";
 import Inputs from "./components/Inputs";
 import Header from "./components/Header";
 import NumberInput from "./components/NumberInput";
+import ResultsSummary from "./components/ResultsSummary";
 import { Card, CardDeck, Col, Container, Row } from "react-bootstrap";
 import "./custom.scss";
 import "./App.css";
@@ -30,10 +31,14 @@ class App extends Component {
         //   0,
         // ],
         // daysUntilFinancialIndependence: 0,
-        yearsMonthsDays1: [0, 0, 0],
-        yearsMonthsDays2: [0, 0, 0],
-        yearsMonthsDays3: [0, 0, 0],
-        yearsMonthsDays4: [0, 0, 0],
+        yearsMonthsDays1: {}, //[0, 0, 0],
+        yearsMonthsDays2: {},
+        yearsMonthsDays3: {},
+        yearsMonthsDays4: {},
+        lifeExpectancyResults: {
+          lifeExpectancy: [],
+          healthyLifeExpectancy: [],
+        },
       },
     };
   }
@@ -52,10 +57,9 @@ class App extends Component {
   };
 
   runCalcs() {
-    const baseUrl =
-      "https://opulazurefunction.azurewebsites.net/api/OpulFunction?code=";
-    // const url = "http://localhost:7071/api/OpulFunction";
-    const url = baseUrl.concat(process.env.REACT_APP_API_KEY);
+    //const baseUrl = "https://opulazurefunction.azurewebsites.net/api/OpulFunction?code=";
+    const url = "http://localhost:7071/api/OpulFunction";
+    //const url = baseUrl.concat(process.env.REACT_APP_API_KEY);
 
     const response = fetch(url, {
       method: "POST",
@@ -79,8 +83,43 @@ class App extends Component {
           <Row className="align-items-start">
             <Col md="4" className="padding30">
               <h4>
-                A financial model designed to help you with the big questions.
+                <div className="bold">What is Financial Freedom?</div>
               </h4>
+              <h5>
+                <br />A state of freedom where you can spend your time as you
+                wish, free from the need to work for money. Waking up each day
+                and deciding how you want to live it. The only requirement -
+                enough financial wealth to support your desired lifestyle.
+                <br />
+                <br />
+                The default age in society for financial freedom is after we
+                have used up most of our health and time, aged 65 to 70. This is
+                when our Governments provide pensions.{" "}
+                <text className="bold">
+                  However, it is possible to reach financial freedom much sooner
+                  than this.{" "}
+                </text>
+                Across most of the world, 10 years of work is enough to keep you
+                sheltered, fed and happy for the rest of your days.
+                <br />
+                <br />
+                You have a choice how simple or luxurious your lifestyle across
+                your lifetime is. In fact, this is the{" "}
+                <text className="bold">same choice</text> as the number of years
+                you work across your lifetime. This is shown in the [Lifestyle]
+                section.
+                <br />
+                <br />
+                The Opul toolkit helps you make this decision and answer other
+                questions such as:
+                <br />
+                <div className="italic">
+                  How much wealth do I need?
+                  <br />
+                  How soon can I reach Financial Freedom? <br />
+                  What is the trade-off between lifestyle and years worked?
+                </div>
+              </h5>
 
               <Inputs
                 className="paddingTopAndBottomLarge"
@@ -89,6 +128,15 @@ class App extends Component {
               />
             </Col>
             <Col md="8" className="padding30">
+              <ResultsSummary
+                age={this.state.inputsDictionary.age}
+                lifeExpectancy={
+                  this.state.results.lifeExpectancyResults.lifeExpectancy
+                }
+                healthyLifeExpectancy={
+                  this.state.results.lifeExpectancyResults.healthyLifeExpectancy
+                }
+              />
               <h3 className="paddingTopAndBottomLarge">
                 Projected net-worth over lifetime
               </h3>

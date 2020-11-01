@@ -33,6 +33,10 @@
   font-weight: bold;
 }
 
+.italic {
+  font-style: italic;
+}
+
 .navbar {
   height: 90px;
   font-family: "Baloo Paaji 2";

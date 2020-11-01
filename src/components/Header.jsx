@@ -19,9 +19,11 @@ class Header extends Component {
           </Navbar.Brand>
           {/* //<Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
           <Navbar.Collapse id="basic-navbar-nav">
+            <div>&nbsp;&nbsp;The Financial Freedom toolkit</div>
+
             <Nav className="mr-auto">
-              <Nav.Link href="#home">Model&nbsp;</Nav.Link>
-              <Nav.Link href="#link">About&nbsp;</Nav.Link>
+              <Nav.Link href="#home">&nbsp;&nbsp;&nbsp;Model&nbsp;</Nav.Link>
+              <Nav.Link href="#link">&nbsp;&nbsp;&nbsp;About&nbsp;</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
