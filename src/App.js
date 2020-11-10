@@ -10,6 +10,7 @@ import "./custom.scss";
 import "./App.css";
 import { intialReturnAssumption } from "./Constants.js";
 
+const debounceTime = 550;
 const resultsInitial = {
   yearsMonthsDays1: {}, //[0, 0, 0],
   yearsMonthsDays2: {},
@@ -59,23 +60,23 @@ class App extends Component {
     //const url = "http://localhost:7071/api/OpulFunction";
     const url = baseUrl.concat(process.env.REACT_APP_API_KEY);
 
-    try {
-      const response = fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json;charset=utf-8",
-        },
-        body: JSON.stringify(this.state.inputsDictionary),
+    const response = fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+      body: JSON.stringify(this.state.inputsDictionary),
+    })
+      .then(handleErrors)
+      .then((response) => response.json())
+      .then((data) => {
+        //console.log(data);
+        this.setState({ results: data });
       })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-          this.setState({ results: data });
-        });
-    } catch (error) {
-      this.setState({ results: resultsInitial });
-      console.log(error);
-    }
+      .catch((error) => {
+        console.log(error);
+        this.setState({ results: resultsInitial });
+      });
   }
 
   render() {
@@ -88,7 +89,7 @@ class App extends Component {
               <Intro />
               <Inputs
                 className="paddingTopAndBottomLarge"
-                updateState={this.updateState}
+                updateState={debounce(this.updateState, debounceTime)}
                 intialReturnAssumption={intialReturnAssumption}
               />
             </Col>
@@ -159,7 +160,7 @@ class App extends Component {
                       Cutting back by{" "}
                       <NumberInput
                         id="lowerSpend"
-                        updateState={this.updateState}
+                        updateState={debounce(this.updateState, debounceTime)}
                       />{" "}
                       a month cuts working lifetime by:
                       <div>{"\n"}</div>
@@ -194,7 +195,7 @@ class App extends Component {
                       <h4>One-off purchase</h4>A one-off purchase of{" "}
                       <NumberInput
                         id="oneOffPurchase"
-                        updateState={this.updateState}
+                        updateState={debounce(this.updateState, debounceTime)}
                       />
                       increases working lifetime by
                       <div>{"\n"}</div>
@@ -248,11 +249,32 @@ class App extends Component {
   }
 }
 
+function debounce(func, wait) {
+  let timeout;
+
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+
 function encodeQueryData(data) {
   const output = [];
   for (let d in data)
     output.push(encodeURIComponent(d) + "=" + encodeURIComponent(data[d]));
   return output.join("&");
+}
+
+function handleErrors(response) {
+  if (!response.ok) {
+    throw Error(response.statusText);
+  }
+  return response;
 }
 
 export default App;
