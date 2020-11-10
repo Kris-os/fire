@@ -10,6 +10,19 @@ import "./custom.scss";
 import "./App.css";
 import { intialReturnAssumption } from "./Constants.js";
 
+const resultsInitial = {
+  yearsMonthsDays1: {}, //[0, 0, 0],
+  yearsMonthsDays2: {},
+  yearsMonthsDays3: {},
+  yearsMonthsDays4: {},
+  lifeExpectancyResults: {
+    lifeExpectancyYearsLeft: [],
+    healthyLifeExpectancyYearsLeft: [],
+    lifeExpectancyAge: [],
+    healthyLifeExpectancyAge: [],
+  },
+};
+
 class App extends Component {
   constructor() {
     super();
@@ -24,39 +37,20 @@ class App extends Component {
         oneOffPurchase: 0,
         returnAboveInflationAssumption: intialReturnAssumption,
       },
-      results: {
-        // baseCaseResults: [
-        //   10000,
-        //   100000,
-        //   100000,
-        //   0,
-        // ],
-        // daysUntilFinancialIndependence: 0,
-        yearsMonthsDays1: {}, //[0, 0, 0],
-        yearsMonthsDays2: {},
-        yearsMonthsDays3: {},
-        yearsMonthsDays4: {},
-        lifeExpectancyResults: {
-          lifeExpectancyYearsLeft: [],
-          healthyLifeExpectancyYearsLeft: [],
-          lifeExpectancyAge: [],
-          healthyLifeExpectancyAge: [],
-        },
-      },
+      results: resultsInitial,
     };
   }
 
   updateState = (id, value) => {
     var inputsDictionaryNew = this.state.inputsDictionary;
     inputsDictionaryNew[id] = value;
-    this.setState(
-      {
-        inputsDictionary: inputsDictionaryNew,
-      },
-      () => {
-        this.runCalcs();
-      }
-    );
+    this.setState({
+      inputsDictionary: inputsDictionaryNew,
+    });
+
+    if (this.state.inputsDictionary.expenditure > 0) {
+      this.runCalcs();
+    } else this.setState({ results: resultsInitial });
   };
 
   runCalcs() {
@@ -65,18 +59,23 @@ class App extends Component {
     //const url = "http://localhost:7071/api/OpulFunction";
     const url = baseUrl.concat(process.env.REACT_APP_API_KEY);
 
-    const response = fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify(this.state.inputsDictionary),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        this.setState({ results: data });
-      });
+    try {
+      const response = fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json;charset=utf-8",
+        },
+        body: JSON.stringify(this.state.inputsDictionary),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          this.setState({ results: data });
+        });
+    } catch (error) {
+      this.setState({ results: resultsInitial });
+      console.log(error);
+    }
   }
 
   render() {

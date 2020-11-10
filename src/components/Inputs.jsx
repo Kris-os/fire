@@ -38,11 +38,11 @@ class Inputs extends Component {
 
           <Row className="paddingTopAndBottomSmall">
             <Col column sm={6}>
-              Annual cost of lifestyle
+              Annual net earnings
             </Col>
             <Col sm={6}>
               <NumberInput
-                id="expenditure"
+                id="netEarnings"
                 updateState={this.props.updateState}
                 min={0}
               />
@@ -51,11 +51,11 @@ class Inputs extends Component {
 
           <Row className="paddingTopAndBottomSmall">
             <Col column sm={6}>
-              Annual net earnings
+              Annual cost of lifestyle
             </Col>
             <Col sm={6}>
               <NumberInput
-                id="netEarnings"
+                id="expenditure"
                 updateState={this.props.updateState}
                 min={0}
               />
