@@ -37,7 +37,7 @@ function Intro(props) {
             <div className="italic">
             How much wealth do I need?
             <br />
-            How soon can I reach Financial Freedom? <br />
+            When can I reach Financial Freedom? <br />
             What is the trade-off between lifestyle and years worked?
             </div>
         </h5>

@@ -24,7 +24,7 @@ import {
 //   }
 // ];
 
-export default class Example extends PureComponent {
+export default class Chart extends PureComponent {
   // jsfiddleUrl for testing default settings "https://jsfiddle.net/alidingling/xqjtetw0/";
 
   render() {
