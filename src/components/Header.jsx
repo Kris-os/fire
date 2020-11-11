@@ -10,13 +10,15 @@ class Header extends Component {
       <div>
         <Navbar bg="dark">
           <Navbar.Brand>
-            <img
-              alt=""
-              src={OpulIcon}
-              width="140"
-              height="70"
-              className="d-inline-block align-top"
-            />
+            <Nav.Link as={Link} to="/">
+              <img
+                alt=""
+                src={OpulIcon}
+                width="140"
+                height="70"
+                className="d-inline-block align-top"
+              />
+            </Nav.Link>
           </Navbar.Brand>
           {/* //<Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
           <Navbar.Collapse id="basic-navbar-nav">
