@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Nav, Navbar } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import OpulIcon from "../Images/OpulIcon.png";
 
 class Header extends Component {
@@ -8,7 +9,7 @@ class Header extends Component {
     return (
       <div>
         <Navbar bg="dark">
-          <Navbar.Brand href="#home">
+          <Navbar.Brand>
             <img
               alt=""
               src={OpulIcon}
@@ -22,8 +23,12 @@ class Header extends Component {
             <div>&nbsp;&nbsp;The Financial Freedom toolkit</div>
 
             <Nav className="mr-auto">
-              <Nav.Link href="#home">&nbsp;&nbsp;&nbsp;Model&nbsp;</Nav.Link>
-              <Nav.Link href="#link">&nbsp;&nbsp;&nbsp;About&nbsp;</Nav.Link>
+              <Nav.Link as={Link} to="/model">
+                &nbsp;&nbsp;&nbsp;Model&nbsp;
+              </Nav.Link>
+              <Nav.Link as={Link} to="/about">
+                &nbsp;&nbsp;&nbsp;About&nbsp;
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
