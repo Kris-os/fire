@@ -1,37 +1,32 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import NumericInput from "react-numeric-input";
-import { Form } from "react-bootstrap";
 
-class NumberInput extends Component {
-  state = {
-    value: this.props.initialValue,
-  };
+function NumberInput(props) {
+  const [value, setValue] = useState(props.initialValue);
 
-  onInputChange(event) {
+  function onInputChange(event) {
     var num = event;
-    if (num != null) num = num.toFixed(this.props.precision);
-    if (num != null && num > this.props.max) num = this.props.max;
-    if (num != null && num < this.props.min) num = this.props.min;
-    this.setState({ value: num });
-    this.props.updateState(this.props.id, num);
+    if (num != null) num = num.toFixed(props.precision);
+    if (num != null && num > props.max) num = props.max;
+    if (num != null && num < props.min) num = props.min;
+    setValue(num);
+    props.updateState(props.id, num);
   }
 
-  render() {
-    return (
-      <NumericInput
-        className="form-control"
-        id={this.props.id}
-        min={this.props.min}
-        max={this.props.max}
-        onChange={this.onInputChange.bind(this)}
-        precision={this.props.precision}
-        value={this.state.value}
-        step={this.props.step}
-        style={false}
-        snap
-      />
-    );
-  }
+  return (
+    <NumericInput
+      className="form-control"
+      id={props.id}
+      min={props.min}
+      max={props.max}
+      onChange={onInputChange.bind(this)}
+      precision={props.precision}
+      value={value}
+      step={props.step}
+      style={false}
+      snap
+    />
+  );
 }
 
 export default NumberInput;

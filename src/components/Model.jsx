@@ -20,7 +20,7 @@ const resultsInitial = {
 };
 const debounceTime = 550;
 
-function Model(props) {
+function Model() {
   const [inputsDictionary, setInputs] = useState({
     age: 0,
     expenditure: 0,
@@ -48,12 +48,12 @@ function Model(props) {
   }
 
   const updateState = (id, value) => {
-    var inputsDictionaryNew = inputsDictionary;
+    let inputsDictionaryNew = inputsDictionary;
     inputsDictionaryNew[id] = value;
     setInputs(inputsDictionaryNew);
 
     if (inputsDictionary.expenditure > 0) {
-      runCalcs();
+      debounce(runCalcs, debounceTime)();
     } else setResults(resultsInitial);
   };
 
@@ -73,7 +73,6 @@ function Model(props) {
       .then(handleErrors)
       .then((response) => response.json())
       .then((data) => {
-        //console.log(data);
         setResults(data);
       })
       .catch((error) => {
@@ -95,7 +94,7 @@ function Model(props) {
         <Col md="4" className="padding30">
           <Inputs
             className="paddingTopAndBottomLarge"
-            updateState={debounce(updateState, debounceTime)}
+            updateState={updateState}
             intialReturnAssumption={intialReturnAssumption}
           />
         </Col>
@@ -153,11 +152,8 @@ function Model(props) {
                 <Card.Text>
                   <h4>Impact of reduction in lifestyle</h4>
                   Cutting back by{" "}
-                  <NumberInput
-                    id="lowerSpend"
-                    updateState={debounce(updateState, debounceTime)}
-                  />{" "}
-                  a month cuts working lifetime by:
+                  <NumberInput id="lowerSpend" updateState={updateState} /> a
+                  month cuts working lifetime by:
                   <div>{"\n"}</div>
                   <text className="bold">
                     {results.yearsMonthsDays2[0]}
@@ -188,10 +184,7 @@ function Model(props) {
               <Card.Body>
                 <Card.Text>
                   <h4>One-off purchase</h4>A one-off purchase of{" "}
-                  <NumberInput
-                    id="oneOffPurchase"
-                    updateState={debounce(updateState, debounceTime)}
-                  />
+                  <NumberInput id="oneOffPurchase" updateState={updateState} />
                   increases working lifetime by
                   <div>{"\n"}</div>
                   <text className="bold">

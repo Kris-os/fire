@@ -21,7 +21,9 @@ class Header extends Component {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          {/* <Navbar.Text>&nbsp;&nbsp;The Financial Freedom toolkit</Navbar.Text> */}
+          <Navbar.Text style={{ color: "black" }}>
+            &nbsp;&nbsp;The Financial Freedom toolkit
+          </Navbar.Text>
 
           <Nav className="mr-auto">
             <Nav.Link as={Link} to="/model">
