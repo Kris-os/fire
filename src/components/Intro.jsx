@@ -1,12 +1,17 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 function Intro(props) {
   return (
     <Container fluid>
       <Row>
-        <Col md="4" />
-        <Col md="4" className="padding30">
+        <Col xl="3" />
+        <Col xl="6" className="padding30">
+          <h4>
+            <div className="bold">Opul</div>
+          </h4>
+
           <h4>
             <div className="bold">What is Financial Freedom?</div>
           </h4>
@@ -28,10 +33,10 @@ function Intro(props) {
             sheltered, fed and happy for the rest of your days.
             <br />
             <br />
-            You have a choice how simple or luxurious your lifestyle across your
-            lifetime is. In fact, this is the{" "}
-            <text className="bold">same choice</text> as the number of years you
-            work across your lifetime. This is shown in the [Lifestyle] section.
+            You have a choice how simple or luxurious your lifestyle is. This is
+            actually the <text className="bold">same choice</text> as the number
+            of years you will have to work. This is shown in the [Lifestyle]
+            section.
             <br />
             <br />
             The Opul toolkit helps you make this decision and answer other
@@ -42,10 +47,13 @@ function Intro(props) {
               <br />
               When can I reach Financial Freedom? <br />
               What is the trade-off between lifestyle and years worked?
+              <br />
+              <br />
             </div>
           </h5>
+          <Link to="/model">Go to model</Link>
         </Col>
-        <Col md="4" />
+        <Col xl="3" />
       </Row>
     </Container>
   );

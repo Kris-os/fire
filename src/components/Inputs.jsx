@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Form, Col, Row } from "react-bootstrap";
 import NumberInput from "./NumberInput";
 
@@ -13,9 +13,7 @@ function Inputs(props) {
       <br></br>
       <Form>
         <Row className="paddingTopAndBottomSmall">
-          <Col column sm={6}>
-            Age
-          </Col>
+          <Col sm={6}>Age</Col>
           <Col sm={6}>
             <NumberInput
               id="age"
@@ -27,18 +25,14 @@ function Inputs(props) {
         </Row>
 
         <Row className="paddingTopAndBottomSmall">
-          <Col column sm={6}>
-            Net-worth
-          </Col>
+          <Col sm={6}>Net-worth</Col>
           <Col sm={6}>
             <NumberInput id="networth" updateState={props.updateState} />
           </Col>
         </Row>
 
         <Row className="paddingTopAndBottomSmall">
-          <Col column sm={6}>
-            Annual net earnings
-          </Col>
+          <Col sm={6}>Annual net earnings</Col>
           <Col sm={6}>
             <NumberInput
               id="netEarnings"
@@ -49,9 +43,7 @@ function Inputs(props) {
         </Row>
 
         <Row className="paddingTopAndBottomSmall">
-          <Col column sm={6}>
-            Annual cost of lifestyle
-          </Col>
+          <Col sm={6}>Annual cost of lifestyle</Col>
           <Col sm={6}>
             <NumberInput
               id="expenditure"
@@ -62,9 +54,7 @@ function Inputs(props) {
         </Row>
 
         <Row className="paddingTopAndBottomSmall">
-          <Col column sm={6}>
-            Inheritance to leave behind
-          </Col>
+          <Col sm={6}>Inheritance to leave behind</Col>
           <Col sm={6}>
             <NumberInput
               id="inheritanceToLeaveBehind"
@@ -80,9 +70,7 @@ function Inputs(props) {
       <br></br>
       <Form onSubmit={handleSubmit}>
         <Row className="paddingTopAndBottomSmall">
-          <Col column sm={6}>
-            Investment return above inflation (% pa)
-          </Col>
+          <Col sm={6}>Investment return above inflation (% pa)</Col>
           <Col sm={6}>
             <NumberInput
               id="returnAboveInflationAssumption"

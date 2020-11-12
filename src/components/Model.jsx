@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import Chart from "./Chart";
 import Inputs from "./Inputs";
 import NumberInput from "./NumberInput";
 import ResultsSummary from "./ResultsSummary";
-import { intialReturnAssumption } from "./../Constants.js";
+import { intialReturnAssumption } from "../Constants.js";
 import { Card, CardDeck, Col, Container, Row } from "react-bootstrap";
+import { v4 as uuidv4 } from "uuid";
 
 const resultsInitial = {
   yearsMonthsDays1: {}, //[0, 0, 0],
@@ -18,9 +19,11 @@ const resultsInitial = {
     healthyLifeExpectancyAge: [],
   },
 };
-const debounceTime = 550;
 
 function Model() {
+  const debounceTime = 550;
+
+  let unid = "";
   const [inputsDictionary, setInputs] = useState({
     age: 0,
     expenditure: 0,
@@ -35,51 +38,62 @@ function Model() {
 
   function debounce(func, wait) {
     let timeout;
-
-    return function executedFunction(...args) {
-      const later = () => {
-        clearTimeout(timeout);
-        func(...args);
-      };
-
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
+    return function (...args) {
+      const context = this;
+      if (timeout) clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        timeout = null;
+        func.apply(context, args);
+      }, wait);
     };
   }
+
+  const debouncedRunCalcs = React.useCallback(
+    debounce(runCalcs, debounceTime),
+    []
+  );
 
   const updateState = (id, value) => {
     let inputsDictionaryNew = inputsDictionary;
     inputsDictionaryNew[id] = value;
     setInputs(inputsDictionaryNew);
+    console.log(debounceTime);
 
     if (inputsDictionary.expenditure > 0) {
-      debounce(runCalcs, debounceTime)();
+      debouncedRunCalcs();
     } else setResults(resultsInitial);
   };
 
-  const runCalcs = () => {
+  function runCalcs() {
     const baseUrl =
       "https://opulazurefunction.azurewebsites.net/api/OpulFunction?code=";
-    //const url = "http://localhost:7071/api/OpulFunction";
+    // const url = "http://localhost:7071/api/OpulFunction";
     const url = baseUrl.concat(process.env.REACT_APP_API_KEY);
 
-    const response = fetch(url, {
+    let requestId = uuidv4().toString();
+    unid = requestId;
+    let inputs = inputsDictionary;
+    inputs.id = requestId;
+
+    fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json;charset=utf-8",
       },
-      body: JSON.stringify(inputsDictionary),
+      body: JSON.stringify(inputs),
     })
       .then(handleErrors)
       .then((response) => response.json())
       .then((data) => {
-        setResults(data);
+        if (data.id == unid) {
+          setResults(data);
+        }
       })
       .catch((error) => {
         console.log(error);
         setResults(resultsInitial);
       });
-  };
+  }
 
   function handleErrors(response) {
     if (!response.ok) {
