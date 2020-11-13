@@ -1,9 +1,27 @@
+$base-case-color: #ff9aa2;
+$higher-investment-color: #75c2a6;
+$one-off-purchase-color: #c7ceea;
+$dark-color: #8ea3aa;
+
 $theme-colors: (
-  "pink": #ff9aa2,
+  "pink": $base-case-color,
   "primary": #2a8dad,
-  "green": #75c2a6,
-  "blue": #c7ceea,
-  "dark": #8ea3aa,
+  "green": $higher-investment-color,
+  "blue": $one-off-purchase-color,
+  "dark": $dark-color,
 );
+
+.baseCaseColor {
+  color: $base-case-color; //theme-color("pink");
+}
+.increasedInvestmentColor {
+  color: $higher-investment-color;
+}
+.oneOffPurchaseColor {
+  color: $one-off-purchase-color;
+}
+.darkColor {
+  color: $dark-color;
+}
 
 @import "~bootstrap/scss/bootstrap.scss";

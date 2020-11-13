@@ -1,11 +1,9 @@
 import React, { useState, useCallback } from "react";
-import Chart from "./Chart";
 import Inputs from "./Inputs";
-import NumberInput from "./NumberInput";
-import ResultsSummary from "./ResultsSummary";
 import { intialReturnAssumption } from "../Constants.js";
-import { Card, CardDeck, Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import { v4 as uuidv4 } from "uuid";
+import Results from "./Results";
 
 const resultsInitial = {
   yearsMonthsDays1: {}, //[0, 0, 0],
@@ -57,7 +55,6 @@ function Model() {
     let inputsDictionaryNew = inputsDictionary;
     inputsDictionaryNew[id] = value;
     setInputs(inputsDictionaryNew);
-    console.log(debounceTime);
 
     if (inputsDictionary.expenditure > 0) {
       debouncedRunCalcs();
@@ -107,142 +104,17 @@ function Model() {
       <Row className="align-items-start">
         <Col lg="5" className="padding30">
           <Inputs
-            className="paddingTopAndBottomLarge"
+            // className="paddingTopAndBottomLarge"
             updateState={updateState}
             intialReturnAssumption={intialReturnAssumption}
           />
         </Col>
         <Col lg="7" className="padding30">
-          <ResultsSummary
+          <Results
             age={inputsDictionary.age}
-            lifeExpectancyResults={results.lifeExpectancyResults}
-            baseCasePercentHleWorking={results.baseCasePercentHleWorking}
-            baseCasePercentHleFree={results.baseCasePercentHleFree}
-            lowerMonthlySpendPercentHleWorking={
-              results.lowerMonthlySpendPercentHleWorking
-            }
-            lowerMonthlySpendPercentHleFree={
-              results.lowerMonthlySpendPercentHleFree
-            }
+            results={results}
+            updateState={updateState}
           />
-          <h3 className="paddingTopAndBottomLarge">
-            Projected net-worth over lifetime
-          </h3>
-          <div style={{ height: "30vw", minHeight: "225px" }}>
-            <Chart results={results} age={inputsDictionary.age} />
-          </div>
-          <CardDeck>
-            <Card
-              style={{ minWidth: "300px" }}
-              className="marginTopAndBottomLarge border-3"
-              border="pink"
-            >
-              <Card.Body>
-                <Card.Text>
-                  <h4>
-                    Projected financial freedom - Age&#160;
-                    <text className="bold">
-                      {results.baseCaseFinancialFreedomAge}
-                    </text>
-                  </h4>
-                  <div>{"\n"}</div>
-                  <text className="bold">{results.yearsMonthsDays1[0]} </text>
-                  years&#160;&#160;
-                  <text className="bold">{results.yearsMonthsDays1[1]} </text>
-                  months&#160;&#160;
-                  <text className="bold">
-                    {results.yearsMonthsDays1[2]}{" "}
-                  </text>{" "}
-                  days
-                </Card.Text>
-              </Card.Body>
-            </Card>
-            <Card
-              className="marginTopAndBottomLarge border-3"
-              style={{ minWidth: "300px" }}
-              border="green"
-            >
-              <Card.Body>
-                <Card.Text>
-                  <h4>Impact of reduction in lifestyle</h4>
-                  Cutting back by{" "}
-                  <NumberInput id="lowerSpend" updateState={updateState} /> a
-                  month cuts working lifetime by:
-                  <div>{"\n"}</div>
-                  <text className="bold">
-                    {results.yearsMonthsDays2[0]}
-                  </text>{" "}
-                  years&#160;&#160;
-                  <text className="bold">
-                    {results.yearsMonthsDays2[1]}
-                  </text>{" "}
-                  months&#160;&#160;
-                  <text className="bold">
-                    {results.yearsMonthsDays2[2]}
-                  </text>{" "}
-                  days
-                  {/* <Form.Check
-                    className="paddingTopAndBottomSmall"
-                    type="checkbox"
-                    label="Add to chart"
-                    style={{ fontStyle: "italic" }}
-                  /> */}
-                </Card.Text>
-              </Card.Body>
-            </Card>
-            <Card
-              className="marginTopAndBottomLarge border-3"
-              style={{ minWidth: "300px" }}
-              border="blue"
-            >
-              <Card.Body>
-                <Card.Text>
-                  <h4>One-off purchase</h4>A one-off purchase of{" "}
-                  <NumberInput id="oneOffPurchase" updateState={updateState} />
-                  increases working lifetime by
-                  <div>{"\n"}</div>
-                  <text className="bold">
-                    {results.yearsMonthsDays3[0]}
-                  </text>{" "}
-                  years&#160;&#160;
-                  <text className="bold">
-                    {results.yearsMonthsDays3[1]}
-                  </text>{" "}
-                  months&#160;&#160;
-                  <text className="bold">
-                    {results.yearsMonthsDays3[2]}
-                  </text>{" "}
-                  days
-                </Card.Text>
-              </Card.Body>
-            </Card>
-
-            {/* <Card
-              className="marginTopAndBottomLarge border-3"
-              style={{ minWidth: "300px" }}
-            >
-              <Card.Body>
-                <Card.Text>
-                  <h4>Getting a head start</h4>2 years of saving an extra{" "}
-                  <text className="bold">200</text> a month reduces working
-                  lifetime by
-                  <div>{"\n"}</div>
-                  <text className="bold">
-                    {this.state.results.yearsMonthsDays4[0]}
-                  </text>{" "}
-                  years&#160;&#160;
-                  <text className="bold">
-                    {this.state.results.yearsMonthsDays4[1]}
-                  </text>{" "}
-                  months&#160;&#160;
-                  <text className="bold">
-                    {this.state.results.yearsMonthsDays4[2]}
-                  </text>{" "}
-                  days
-                </Card.Text>
-              </Card.Body>
-            </Card> */}
-          </CardDeck>
         </Col>
       </Row>
     </Container>

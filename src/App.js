@@ -13,6 +13,7 @@ function App() {
         <Header />
         <Switch>
           <Route path="/" exact component={Intro} />
+          <Route path="/home" component={Intro} />
           <Route path="/model" component={Model} />
         </Switch>
       </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, Col, Row } from "react-bootstrap";
 import NumberInput from "./NumberInput";
+import "../custom.scss";
 
 function Inputs(props) {
   const handleSubmit = (event) => {
@@ -9,7 +10,23 @@ function Inputs(props) {
 
   return (
     <div className={"inputs " + props.className}>
-      <h3>Inputs</h3>
+      <h3 className="marginTopAndBottomLarge">
+        How can I reach financial freedom?
+      </h3>
+      <div style={{ textAlign: "left" }}>
+        Step 1 - Choose the lifestyle you want to live. Understand there's a
+        trade-off between the cost of your lifestyle and how many years you will
+        work. Use the lifestyle tool to help make this choice.
+        <br />
+        Step 2 - Invest. <br /> Step 3 - Track progress & update as life changes
+        <br />
+        <br />
+      </div>
+
+      <h3 className="marginTopAndBottomLarge">
+        Your current situation (this is your{" "}
+        <text className="bold baseCaseColor">base case</text>)
+      </h3>
       <br></br>
       <Form>
         <Row className="paddingTopAndBottomSmall">

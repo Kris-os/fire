@@ -8,13 +8,13 @@ function Intro(props) {
       <Row>
         <Col xl="3" />
         <Col xl="6" className="padding30">
-          <h4>
-            <div className="bold">Opul</div>
-          </h4>
-
-          <h4>
-            <div className="bold">What is Financial Freedom?</div>
-          </h4>
+          <h4 className="bold">Opul</h4>
+          <h5>
+            A financial freedom toolkit to allow you to make big decisions
+            better.
+          </h5>
+          <br />
+          <h4 className="bold">What is Financial Freedom?</h4>
           <h5>
             A state of freedom where you can spend your time as you wish, free
             from the need to work for money. Waking up each day and deciding how
@@ -51,7 +51,9 @@ function Intro(props) {
               <br />
             </div>
           </h5>
-          <Link to="/model">Go to model</Link>
+          <Link to="/model">
+            <h5>Go to model</h5>
+          </Link>
         </Col>
         <Col xl="3" />
       </Row>
