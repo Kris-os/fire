@@ -105,14 +105,14 @@ function Model() {
   return (
     <Container fluid>
       <Row className="align-items-start">
-        <Col md="4" className="padding30">
+        <Col lg="5" className="padding30">
           <Inputs
             className="paddingTopAndBottomLarge"
             updateState={updateState}
             intialReturnAssumption={intialReturnAssumption}
           />
         </Col>
-        <Col md="8" className="padding30">
+        <Col lg="7" className="padding30">
           <ResultsSummary
             age={inputsDictionary.age}
             lifeExpectancyResults={results.lifeExpectancyResults}
@@ -128,7 +128,7 @@ function Model() {
           <h3 className="paddingTopAndBottomLarge">
             Projected net-worth over lifetime
           </h3>
-          <div style={{ height: "30vw" }}>
+          <div style={{ height: "30vw", minHeight: "225px" }}>
             <Chart results={results} age={inputsDictionary.age} />
           </div>
           <CardDeck>
