@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, Col, Row } from "react-bootstrap";
 import NumberInput from "./NumberInput";
+import * as consts from "../Constants.js";
 import "../custom.scss";
 
 function Inputs(props) {
@@ -24,11 +25,10 @@ function Inputs(props) {
       </div>
 
       <h3 className="marginTopAndBottomLarge">
-        Your current situation (this is your{" "}
-        <text className="bold baseCaseColor">base case</text>)
+        Your <text className="bold baseCaseColor">current situation</text>
       </h3>
-      <br></br>
-      <Form>
+      <br />
+      <Form onSubmit={handleSubmit}>
         <Row className="paddingTopAndBottomSmall">
           <Col sm={6}>Age</Col>
           <Col sm={6}>
@@ -36,7 +36,7 @@ function Inputs(props) {
               id="age"
               updateState={props.updateState}
               min={0}
-              max={89}
+              max={88}
             />
           </Col>
         </Row>
@@ -82,9 +82,9 @@ function Inputs(props) {
         </Row>
       </Form>
 
-      <br></br>
+      <br />
       <h3>Assumptions</h3>
-      <br></br>
+      <br />
       <Form onSubmit={handleSubmit}>
         <Row className="paddingTopAndBottomSmall">
           <Col sm={6}>Investment return above inflation (% pa)</Col>
@@ -96,7 +96,60 @@ function Inputs(props) {
               max={8}
               precision={1}
               step={0.1}
-              initialValue={4}
+              initialValue={consts.initialReturnAssumption}
+            />
+          </Col>
+        </Row>
+
+        <Row className="paddingTopAndBottomSmall">
+          <Col sm={6}>Salary growth per year above inflation (% pa)</Col>
+          <Col sm={6}>
+            <NumberInput
+              id="salaryGrowthAssumption"
+              updateState={props.updateState}
+              min={0}
+              max={10}
+              precision={1}
+              step={0.1}
+              initialValue={consts.initialSalaryGrowthAssumption}
+            />
+          </Col>
+        </Row>
+
+        <Row className="paddingTopAndBottomSmall">
+          <Col sm={6}>Years until salary growth stops</Col>
+          <Col sm={6}>
+            <NumberInput
+              id="salaryGrowthYearsAssumption"
+              updateState={props.updateState}
+              min={0}
+              max={30}
+              initialValue={consts.initialSalaryGrowthYearsAssumption}
+            />
+          </Col>
+        </Row>
+
+        <Row className="paddingTopAndBottomSmall">
+          <Col sm={6}>State pension age</Col>
+          <Col sm={6}>
+            <NumberInput
+              id="statePensionAgeAssumption"
+              updateState={props.updateState}
+              min={55}
+              max={75}
+              initialValue={consts.initialStatePensionAgeAssumption}
+            />
+          </Col>
+        </Row>
+
+        <Row className="paddingTopAndBottomSmall">
+          <Col sm={6}>State pension amount per year</Col>
+          <Col sm={6}>
+            <NumberInput
+              id="statePensionAmountAssumption"
+              updateState={props.updateState}
+              min={0}
+              initialValue={consts.initialstatePensionAmountAssumption}
             />
           </Col>
         </Row>

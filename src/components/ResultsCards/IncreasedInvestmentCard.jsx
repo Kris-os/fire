@@ -14,10 +14,10 @@ function IncreasedInvestmentCard(props) {
           <h4 className="bold increasedInvestmentColor">
             Increased saving and investment
           </h4>
-          Increasing investment by{" "}
-          <NumberInput id="lowerSpend" updateState={props.updateState} /> a
-          month cuts working lifetime by:
-          <div>{"\n"}</div>
+          Increasing investment (ie reducing spending) by
+          <NumberInput id="lowerSpend" updateState={props.updateState} inline />
+          a month cuts working lifetime by:
+          <br />
           <text className="bold">{props.results.yearsMonthsDays2[0]}</text>{" "}
           years&#160;&#160;
           <text className="bold">{props.results.yearsMonthsDays2[1]}</text>{" "}
