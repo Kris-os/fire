@@ -10,8 +10,9 @@ function Intro(props) {
         <Col xl="6" className="padding30">
           <h4 className="bold">Opul</h4>
           <h5>
-            A platform to help you reach financial freedom. We do the
-            complicated math, so you can make better decisions.
+            A platform to help you reach financial freedom. Giving you financial
+            tools used by billion dollar investors - we do the complicated math,
+            so you can make better decisions.
           </h5>
 
           <br />
