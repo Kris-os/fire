@@ -20,9 +20,9 @@ const resultsInitial = {
 
 function Model() {
   const debounceTime = 650;
-
+  const debug = true;
   let unid = "";
-  const [inputs, setInputs] = useState({
+  const [apiInputs, setInputs] = useState({
     age: 0,
     expenditure: 0,
     inheritanceToLeaveBehind: 0,
@@ -48,17 +48,34 @@ function Model() {
     setInputs((prevState) => ({ ...prevState, [id]: value }));
   };
 
+  const getUrl = () => {
+    if (debug) return "http://localhost:7071/api/OpulFunction";
+    else {
+      const baseUrl =
+        "https://opulazurefunction.azurewebsites.net/api/OpulFunction?code=";
+      return baseUrl.concat(process.env.REACT_APP_API_KEY);
+    }
+  };
+
   useEffect(() => {
-    if (inputs.expenditure > 0) {
-      debouncedRunCalcs(inputs);
+    if (apiInputs.expenditure > 0) {
+      debouncedRunCalcs(apiInputs);
     } else setResults(resultsInitial);
-  }, [inputs]);
+  }, [apiInputs]);
+
+  useEffect(() => {
+    const url = getUrl();
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+      body: "",
+    });
+  }, []);
 
   function runCalcs(apiInputs) {
-    const baseUrl =
-      "https://opulazurefunction.azurewebsites.net/api/OpulFunction?code=";
-    // const url = "http://localhost:7071/api/OpulFunction";
-    const url = baseUrl.concat(process.env.REACT_APP_API_KEY);
+    const url = getUrl();
 
     let requestId = uuidv4().toString();
     unid = requestId;
@@ -102,7 +119,7 @@ function Model() {
         </Col>
         <Col lg="7" className="padding30">
           <Results
-            age={inputs.age}
+            age={apiInputs.age}
             results={results}
             updateState={updateState}
           />
