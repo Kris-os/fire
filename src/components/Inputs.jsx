@@ -2,9 +2,10 @@ import React from "react";
 import { Form, Col, Row } from "react-bootstrap";
 import NumberInput from "./NumberInput";
 import * as consts from "../Constants.js";
-import "../custom.scss";
 
 function Inputs(props) {
+  const firstColumnWidth = 6;
+  const secondColumnWidth = 6;
   const handleSubmit = (event) => {
     event.preventDefault();
   };
@@ -28,10 +29,15 @@ function Inputs(props) {
         Your <text className="bold baseCaseColor">current situation</text>
       </h3>
       <br />
-      <Form onSubmit={handleSubmit}>
+      <Form
+        onSubmit={handleSubmit}
+        style={{
+          textAlign: "right",
+        }}
+      >
         <Row className="paddingTopAndBottomSmall">
-          <Col sm={6}>Age</Col>
-          <Col sm={6}>
+          <Col sm={firstColumnWidth}>Age</Col>
+          <Col sm={secondColumnWidth}>
             <NumberInput
               id="age"
               updateState={props.updateState}
@@ -42,15 +48,15 @@ function Inputs(props) {
         </Row>
 
         <Row className="paddingTopAndBottomSmall">
-          <Col sm={6}>Net-worth</Col>
-          <Col sm={6}>
+          <Col sm={firstColumnWidth}>Net-worth</Col>
+          <Col sm={secondColumnWidth}>
             <NumberInput id="networth" updateState={props.updateState} />
           </Col>
         </Row>
 
         <Row className="paddingTopAndBottomSmall">
-          <Col sm={6}>Annual net earnings</Col>
-          <Col sm={6}>
+          <Col sm={firstColumnWidth}>Annual net earnings</Col>
+          <Col sm={secondColumnWidth}>
             <NumberInput
               id="netEarnings"
               updateState={props.updateState}
@@ -60,8 +66,8 @@ function Inputs(props) {
         </Row>
 
         <Row className="paddingTopAndBottomSmall">
-          <Col sm={6}>Annual cost of lifestyle</Col>
-          <Col sm={6}>
+          <Col sm={firstColumnWidth}>Annual cost of lifestyle</Col>
+          <Col sm={secondColumnWidth}>
             <NumberInput
               id="expenditure"
               updateState={props.updateState}
@@ -71,8 +77,8 @@ function Inputs(props) {
         </Row>
 
         <Row className="paddingTopAndBottomSmall">
-          <Col sm={6}>Inheritance to leave behind</Col>
-          <Col sm={6}>
+          <Col sm={firstColumnWidth}>Inheritance to leave behind</Col>
+          <Col sm={secondColumnWidth}>
             <NumberInput
               id="inheritanceToLeaveBehind"
               updateState={props.updateState}
@@ -85,10 +91,17 @@ function Inputs(props) {
       <br />
       <h3>Assumptions</h3>
       <br />
-      <Form onSubmit={handleSubmit}>
+      <Form
+        onSubmit={handleSubmit}
+        style={{
+          textAlign: "right",
+        }}
+      >
         <Row className="paddingTopAndBottomSmall">
-          <Col sm={6}>Investment return above inflation (% pa)</Col>
-          <Col sm={6}>
+          <Col sm={firstColumnWidth}>
+            Investment return above inflation (% pa)
+          </Col>
+          <Col sm={secondColumnWidth}>
             <NumberInput
               id="returnAboveInflationAssumption"
               updateState={props.updateState}
@@ -102,8 +115,10 @@ function Inputs(props) {
         </Row>
 
         <Row className="paddingTopAndBottomSmall">
-          <Col sm={6}>Salary growth per year above inflation (% pa)</Col>
-          <Col sm={6}>
+          <Col sm={firstColumnWidth}>
+            Salary growth per year above inflation (% pa)
+          </Col>
+          <Col sm={secondColumnWidth}>
             <NumberInput
               id="salaryGrowthAssumption"
               updateState={props.updateState}
@@ -117,8 +132,8 @@ function Inputs(props) {
         </Row>
 
         <Row className="paddingTopAndBottomSmall">
-          <Col sm={6}>Years until salary growth stops</Col>
-          <Col sm={6}>
+          <Col sm={firstColumnWidth}>Years until salary growth stops</Col>
+          <Col sm={secondColumnWidth}>
             <NumberInput
               id="salaryGrowthYearsAssumption"
               updateState={props.updateState}
@@ -130,8 +145,8 @@ function Inputs(props) {
         </Row>
 
         <Row className="paddingTopAndBottomSmall">
-          <Col sm={6}>State pension age</Col>
-          <Col sm={6}>
+          <Col sm={firstColumnWidth}>State pension age</Col>
+          <Col sm={secondColumnWidth}>
             <NumberInput
               id="statePensionAgeAssumption"
               updateState={props.updateState}
@@ -143,8 +158,8 @@ function Inputs(props) {
         </Row>
 
         <Row className="paddingTopAndBottomSmall">
-          <Col sm={6}>State pension amount per year</Col>
-          <Col sm={6}>
+          <Col sm={firstColumnWidth}>State pension amount per year</Col>
+          <Col sm={secondColumnWidth}>
             <NumberInput
               id="statePensionAmountAssumption"
               updateState={props.updateState}
@@ -152,6 +167,11 @@ function Inputs(props) {
               initialValue={consts.initialstatePensionAmountAssumption}
             />
           </Col>
+        </Row>
+
+        <Row className="paddingTopAndBottomSmall">
+          <Col sm={firstColumnWidth}>You live in a developed country</Col>
+          <Col sm={secondColumnWidth} />
         </Row>
       </Form>
     </div>

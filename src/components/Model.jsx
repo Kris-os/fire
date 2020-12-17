@@ -20,7 +20,7 @@ const resultsInitial = {
 
 function Model() {
   const debounceTime = 650;
-  const debug = true;
+  const debugMode = true;
   let unid = "";
   const [apiInputs, setInputs] = useState({
     age: 0,
@@ -49,7 +49,7 @@ function Model() {
   };
 
   const getUrl = () => {
-    if (debug) return "http://localhost:7071/api/OpulFunction";
+    if (debugMode) return "http://localhost:7071/api/OpulFunction";
     else {
       const baseUrl =
         "https://opulazurefunction.azurewebsites.net/api/OpulFunction?code=";

@@ -2,11 +2,14 @@ import React from "react";
 import { Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import OpulIcon from "../Images/OpulIcon.png";
-import "../App.css";
 
 function Header() {
   return (
-    <Navbar bg="dark" expand="lg">
+    <Navbar
+      bg="dark"
+      expand="lg"
+      style={{ display: "flex", alignItems: "left" }}
+    >
       <Navbar.Brand>
         <Nav.Link as={Link} to="/">
           <img
@@ -20,20 +23,26 @@ function Header() {
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Navbar.Text style={{ color: "black" }}>
+        {/* <Navbar.Text style={{ color: "black" }}>
           &nbsp;&nbsp;The Financial Freedom toolkit&nbsp;&nbsp;
-        </Navbar.Text>
+        </Navbar.Text> */}
 
         <Nav className="mr-auto">
-          <Nav.Link as={Link} to="/home">
-            &nbsp;&nbsp;&nbsp;Home&nbsp;
-          </Nav.Link>
-          <Nav.Link as={Link} to="/model">
-            &nbsp;&nbsp;&nbsp;Model&nbsp;
-          </Nav.Link>
-          <Nav.Link as={Link} to="/about">
-            &nbsp;&nbsp;&nbsp;About&nbsp;
-          </Nav.Link>
+          <Nav.Item>
+            <Nav.Link as={Link} to="/home">
+              &nbsp;&nbsp;&nbsp;Home&nbsp;
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link as={Link} to="/model">
+              &nbsp;&nbsp;&nbsp;Model&nbsp;
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link as={Link} to="/about">
+              &nbsp;&nbsp;&nbsp;About&nbsp;
+            </Nav.Link>
+          </Nav.Item>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

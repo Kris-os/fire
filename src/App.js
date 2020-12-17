@@ -2,8 +2,7 @@ import React from "react";
 import Model from "./components/Model";
 import Header from "./components/Header";
 import Intro from "./components/Intro";
-import "./custom.scss";
-import "./App.css";
+import "./styles/app.scss";
 import { HashRouter, Switch, Route } from "react-router-dom";
 
 function App() {

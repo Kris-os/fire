@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Baloo+Paaji+2");
 @import url("https://fonts.googleapis.com/css?family=Raleway");
+@import url("https://fonts.googleapis.com/css2?family=Andika+New+Basic&display=swap");
+@import "./custom";
+@import "./navbar";
+@import "./scrollbar";
+@import "~bootstrap/scss/bootstrap.scss";
 
 .App {
   text-align: center;
@@ -19,18 +24,6 @@
 
 .italic {
   font-style: italic;
-}
-
-.navbar {
-  font-family: "Baloo Paaji 2";
-  font-size: 40px;
-  font-weight: 400;
-}
-
-.navbar-brand {
-  color: #ffffff !important;
-  font-family: "Baloo Paaji 2";
-  font-weight: 400;
 }
 
 .paddingTopAndBottomSmall {
