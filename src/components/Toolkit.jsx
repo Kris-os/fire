@@ -20,7 +20,7 @@ const resultsInitial = {
 
 function Toolkit() {
   const debounceTime = 650;
-  const debugMode = true;
+  const debugMode = false;
   let unid = "";
   const [apiInputs, setInputs] = useState({
     age: 0,

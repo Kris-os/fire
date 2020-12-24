@@ -11,7 +11,7 @@ function NavLink({ activePage, setActivePage, pageId, pageName }) {
     <Nav.Link
       as={Link}
       to={"/" + pageId}
-      className={`${activePage == pageId ? "selected" : ""}`}
+      className={`${activePage === pageId ? "selected" : ""}`}
       onClick={clickHandler}
     >
       {pageName}

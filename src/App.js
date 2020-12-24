@@ -14,9 +14,16 @@ function App() {
       <div className="App">
         <Header activePage={activePage} setActivePage={setActivePage} />
         <Switch>
-          <Route path="/" exact component={Homepage} />
-          <Route path="/home" component={Homepage} />
-          <Route path="/toolkit" component={Toolkit} />
+          <Route
+            path="/"
+            exact
+            render={() => <Homepage setActivePage={setActivePage} />}
+          />
+          <Route
+            path="/home"
+            render={() => <Homepage setActivePage={setActivePage} />}
+          />
+          <Route path={"/" + consts.toolkitPageId} component={Toolkit} />
         </Switch>
       </div>
     </HashRouter>
