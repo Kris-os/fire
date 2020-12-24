@@ -15,7 +15,11 @@ function IncreasedInvestmentCard(props) {
             Increased saving and investment
           </h4>
           Increasing investment (ie reducing spending) by
-          <NumberInput id="lowerSpend" updateState={props.updateState} inline />
+          <NumberInput
+            inputId="lowerSpend"
+            updateInputs={props.updateInputs}
+            inline
+          />
           a month cuts working lifetime by:
           <br />
           <text className="bold">{props.results.yearsMonthsDays2[0]}</text>{" "}

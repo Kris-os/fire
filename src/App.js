@@ -1,19 +1,22 @@
-import React from "react";
-import Model from "./components/Model";
+import React, { useState } from "react";
+import Toolkit from "./components/Toolkit";
 import Header from "./components/Header";
-import Intro from "./components/Intro";
+import Homepage from "./components/Homepage";
 import "./styles/app.scss";
 import { HashRouter, Switch, Route } from "react-router-dom";
+import * as consts from "./Constants.js";
 
 function App() {
+  const [activePage, setActivePage] = useState(consts.homePageId);
+
   return (
     <HashRouter basename="/">
       <div className="App">
-        <Header />
+        <Header activePage={activePage} setActivePage={setActivePage} />
         <Switch>
-          <Route path="/" exact component={Intro} />
-          <Route path="/home" component={Intro} />
-          <Route path="/model" component={Model} />
+          <Route path="/" exact component={Homepage} />
+          <Route path="/home" component={Homepage} />
+          <Route path="/toolkit" component={Toolkit} />
         </Switch>
       </div>
     </HashRouter>

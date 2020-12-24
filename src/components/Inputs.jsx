@@ -11,7 +11,7 @@ function Inputs(props) {
   };
 
   return (
-    <div className={"inputs " + props.className}>
+    <div className="inputs">
       <h3 className="marginTopAndBottomLarge">
         How can I reach financial freedom?
       </h3>
@@ -39,8 +39,8 @@ function Inputs(props) {
           <Col sm={firstColumnWidth}>Age</Col>
           <Col sm={secondColumnWidth}>
             <NumberInput
-              id="age"
-              updateState={props.updateState}
+              inputId="age"
+              updateInputs={props.updateInputs}
               min={0}
               max={88}
             />
@@ -50,7 +50,7 @@ function Inputs(props) {
         <Row className="paddingTopAndBottomSmall">
           <Col sm={firstColumnWidth}>Net-worth</Col>
           <Col sm={secondColumnWidth}>
-            <NumberInput id="networth" updateState={props.updateState} />
+            <NumberInput inputId="networth" updateInputs={props.updateInputs} />
           </Col>
         </Row>
 
@@ -58,8 +58,8 @@ function Inputs(props) {
           <Col sm={firstColumnWidth}>Annual net earnings</Col>
           <Col sm={secondColumnWidth}>
             <NumberInput
-              id="netEarnings"
-              updateState={props.updateState}
+              inputId="netEarnings"
+              updateInputs={props.updateInputs}
               min={0}
             />
           </Col>
@@ -69,8 +69,8 @@ function Inputs(props) {
           <Col sm={firstColumnWidth}>Annual cost of lifestyle</Col>
           <Col sm={secondColumnWidth}>
             <NumberInput
-              id="expenditure"
-              updateState={props.updateState}
+              inputId="expenditure"
+              updateInputs={props.updateInputs}
               min={0}
             />
           </Col>
@@ -80,8 +80,8 @@ function Inputs(props) {
           <Col sm={firstColumnWidth}>Inheritance to leave behind</Col>
           <Col sm={secondColumnWidth}>
             <NumberInput
-              id="inheritanceToLeaveBehind"
-              updateState={props.updateState}
+              inputId="inheritanceToLeaveBehind"
+              updateInputs={props.updateInputs}
               min={0}
             />
           </Col>
@@ -103,8 +103,8 @@ function Inputs(props) {
           </Col>
           <Col sm={secondColumnWidth}>
             <NumberInput
-              id="returnAboveInflationAssumption"
-              updateState={props.updateState}
+              inputId="returnAboveInflationAssumption"
+              updateInputs={props.updateInputs}
               min={0}
               max={8}
               precision={1}
@@ -120,8 +120,8 @@ function Inputs(props) {
           </Col>
           <Col sm={secondColumnWidth}>
             <NumberInput
-              id="salaryGrowthAssumption"
-              updateState={props.updateState}
+              inputId="salaryGrowthAssumption"
+              updateInputs={props.updateInputs}
               min={0}
               max={10}
               precision={1}
@@ -135,8 +135,8 @@ function Inputs(props) {
           <Col sm={firstColumnWidth}>Years until salary growth stops</Col>
           <Col sm={secondColumnWidth}>
             <NumberInput
-              id="salaryGrowthYearsAssumption"
-              updateState={props.updateState}
+              inputId="salaryGrowthYearsAssumption"
+              updateInputs={props.updateInputs}
               min={0}
               max={30}
               initialValue={consts.initialSalaryGrowthYearsAssumption}
@@ -148,8 +148,8 @@ function Inputs(props) {
           <Col sm={firstColumnWidth}>State pension age</Col>
           <Col sm={secondColumnWidth}>
             <NumberInput
-              id="statePensionAgeAssumption"
-              updateState={props.updateState}
+              inputId="statePensionAgeAssumption"
+              updateInputs={props.updateInputs}
               min={55}
               max={75}
               initialValue={consts.initialStatePensionAgeAssumption}
@@ -161,8 +161,8 @@ function Inputs(props) {
           <Col sm={firstColumnWidth}>State pension amount per year</Col>
           <Col sm={secondColumnWidth}>
             <NumberInput
-              id="statePensionAmountAssumption"
-              updateState={props.updateState}
+              inputId="statePensionAmountAssumption"
+              updateInputs={props.updateInputs}
               min={0}
               initialValue={consts.initialstatePensionAmountAssumption}
             />

@@ -25,12 +25,12 @@ function Results(props) {
         <BaseCaseCard results={props.results} />
         <IncreasedInvestmentCard
           results={props.results}
-          updateState={props.updateState}
+          updateInputs={props.updateInputs}
           improvement={GetImprovement()}
         />
         <OneOffPurchaseCard
           results={props.results}
-          updateState={props.updateState}
+          updateInputs={props.updateInputs}
         />
       </CardDeck>
       <br />

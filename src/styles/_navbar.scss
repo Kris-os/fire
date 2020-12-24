@@ -1,11 +1,18 @@
 .navbar {
   font-family: "Andika New Basic";
   font-size: 40px;
-  font-weight: 400;
+  font-weight: 600;
+
+  a:hover {
+    color: #10333f !important;
+  }
 }
 
-.navbar-brand {
-  color: #ffffff !important;
-  font-family: "Baloo Paaji 2";
-  font-weight: 400;
+.navbar-light .navbar-nav .nav-link {
+  color: #1b576b;
+  padding-left: 3rem;
+}
+
+.selected {
+  color: #10333f !important;
 }

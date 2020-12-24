@@ -10,13 +10,12 @@ function NumberInput(props) {
     if (num != null && num > props.max) num = props.max;
     if (num != null && num < props.min) num = props.min;
     setValue(num);
-    props.updateState(props.id, num);
+    props.updateInputs(props.inputId, num);
   }
 
   return (
     <NumericInput
       className="form-control"
-      id={props.id}
       min={props.min}
       max={props.max}
       onChange={onInputChange.bind(this)}

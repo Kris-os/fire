@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-function Intro(props) {
+function Homepage() {
   return (
     <>
       <style type="text/css">
@@ -17,7 +17,7 @@ function Intro(props) {
       <Container fluid>
         <Row>
           <Col xl="3" />
-          <Col xl="6" className="padding30  ">
+          <Col xl="6" className="padding30">
             <div
               style={{
                 textAlign: "left",
@@ -92,4 +92,4 @@ function Intro(props) {
   );
 }
 
-export default Intro;
+export default Homepage;

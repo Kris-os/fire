@@ -14,3 +14,8 @@ export const debounce = (func, wait) => {
     }, wait);
   };
 };
+
+//PageIds
+export const homePageId = "home";
+export const toolkitPageId = "toolkit";
+export const aboutPageId = "about";

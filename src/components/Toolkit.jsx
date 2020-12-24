@@ -18,7 +18,7 @@ const resultsInitial = {
   },
 };
 
-function Model() {
+function Toolkit() {
   const debounceTime = 650;
   const debugMode = true;
   let unid = "";
@@ -44,8 +44,8 @@ function Model() {
     []
   );
 
-  const updateState = (id, value) => {
-    setInputs((prevState) => ({ ...prevState, [id]: value }));
+  const updateInputs = (inputId, value) => {
+    setInputs((prevState) => ({ ...prevState, [inputId]: value }));
   };
 
   const getUrl = () => {
@@ -114,14 +114,14 @@ function Model() {
         <Col lg="5" className="padding30">
           <Inputs
             // className="paddingTopAndBottomLarge"
-            updateState={updateState}
+            updateInputs={updateInputs}
           />
         </Col>
         <Col lg="7" className="padding30">
           <Results
             age={apiInputs.age}
             results={results}
-            updateState={updateState}
+            updateInputs={updateInputs}
           />
         </Col>
       </Row>
@@ -129,4 +129,4 @@ function Model() {
   );
 }
 
-export default Model;
+export default Toolkit;

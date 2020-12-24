@@ -1,9 +1,11 @@
 import React from "react";
 import { Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import NavLink from "./NavLink";
 import OpulIcon from "../Images/OpulIcon.png";
+import * as consts from "../Constants.js";
 
-function Header() {
+function Header({ activePage, setActivePage }) {
   return (
     <Navbar
       bg="dark"
@@ -22,26 +24,31 @@ function Header() {
         </Nav.Link>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        {/* <Navbar.Text style={{ color: "black" }}>
-          &nbsp;&nbsp;The Financial Freedom toolkit&nbsp;&nbsp;
-        </Navbar.Text> */}
-
+      <Navbar.Collapse className="basic-navbar-nav">
         <Nav className="mr-auto">
           <Nav.Item>
-            <Nav.Link as={Link} to="/home">
-              &nbsp;&nbsp;&nbsp;Home&nbsp;
-            </Nav.Link>
+            <NavLink
+              activePage={activePage}
+              setActivePage={setActivePage}
+              pageId={consts.homePageId}
+              pageName="Home"
+            />
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link as={Link} to="/model">
-              &nbsp;&nbsp;&nbsp;Model&nbsp;
-            </Nav.Link>
+            <NavLink
+              activePage={activePage}
+              setActivePage={setActivePage}
+              pageId={consts.toolkitPageId}
+              pageName="Toolkit"
+            />
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link as={Link} to="/about">
-              &nbsp;&nbsp;&nbsp;About&nbsp;
-            </Nav.Link>
+            <NavLink
+              activePage={activePage}
+              setActivePage={setActivePage}
+              pageId={consts.aboutPageId}
+              pageName="About"
+            />
           </Nav.Item>
         </Nav>
       </Navbar.Collapse>
