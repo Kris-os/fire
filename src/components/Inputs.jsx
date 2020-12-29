@@ -55,7 +55,7 @@ function Inputs(props) {
         </Row>
 
         <Row className="paddingTopAndBottomSmall">
-          <Col sm={firstColumnWidth}>Annual net earnings</Col>
+          <Col sm={firstColumnWidth}>Net earnings per year</Col>
           <Col sm={secondColumnWidth}>
             <NumberInput
               inputId="netEarnings"
@@ -66,7 +66,7 @@ function Inputs(props) {
         </Row>
 
         <Row className="paddingTopAndBottomSmall">
-          <Col sm={firstColumnWidth}>Annual cost of lifestyle</Col>
+          <Col sm={firstColumnWidth}>Lifestyle cost per year</Col>
           <Col sm={secondColumnWidth}>
             <NumberInput
               inputId="expenditure"

@@ -2,7 +2,7 @@ import React from "react";
 import { Card } from "react-bootstrap";
 import moment from "moment";
 
-function BaseCaseCard(props) {
+function BaseCaseCard({ currentSituationCase }) {
   Date.prototype.addDays = function (days) {
     var date = new Date(this.valueOf());
     date.setDate(date.getDate() + days);
@@ -11,41 +11,43 @@ function BaseCaseCard(props) {
 
   function ffDate() {
     var d = new Date();
-    d = d.addDays(props.results.daysUntilFinancialIndependence);
+    d = d.addDays(currentSituationCase.daysUntilFinancialFreedom);
     return d;
   }
 
   return (
-    <Card
-      style={{ minWidth: "300px" }}
-      className="border-3 marginTopAndBottomLarge"
-      border="pink"
-    >
+    <Card className="border-3 marginTopAndBottomLarge" border="pink">
       <Card.Body>
         <Card.Text tag="div">
           <h4>
             <text className="baseCaseColor bold">
               Your financial freedom age:&#160;
-              {props.results.baseCaseFinancialFreedomAge}
+              {currentSituationCase.financialFreedomAge}
             </text>
           </h4>
-          <text className="bold">{props.results.yearsMonthsDays1[0]} </text>
+          <text className="bold">
+            {currentSituationCase.yearsMonthsDays.years}{" "}
+          </text>
           years&#160;&#160;
-          <text className="bold">{props.results.yearsMonthsDays1[1]} </text>
+          <text className="bold">
+            {currentSituationCase.yearsMonthsDays.months}{" "}
+          </text>
           months&#160;&#160;
           <text className="bold">
-            {props.results.yearsMonthsDays1[2]}{" "}
+            {currentSituationCase.yearsMonthsDays.days}{" "}
           </text>{" "}
           days.
           <br />({moment(ffDate()).format("MMMM Do YYYY")})
           <br />
           <br />
-          Under your base case inputs, you spend{" "}
+          Under your current situation inputs, you spend{" "}
           <text className="bold">
-            {props.results.baseCasePercentHleWorking}%
+            {currentSituationCase.percentHleWorking}%
           </text>{" "}
-          of your healthy life expectancy working, and{" "}
-          <text className="bold">{props.results.baseCasePercentHleFree}%</text>{" "}
+          of your remaining healthy life expectancy working, and{" "}
+          <text className="bold">
+            {1 - currentSituationCase.percentHleWorking}%
+          </text>{" "}
           financially free.
         </Card.Text>
       </Card.Body>

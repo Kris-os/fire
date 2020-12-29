@@ -4,10 +4,7 @@ import NumberInput from "../NumberInput";
 
 function Headstart(props) {
   return (
-    <Card
-      className="marginTopAndBottomLarge border-3"
-      style={{ minWidth: "300px" }}
-    >
+    <Card className="marginTopAndBottomLarge border-3">
       <Card.Body>
         <Card.Text>
           <h4>Getting a head start</h4>2 years of saving an extra{" "}

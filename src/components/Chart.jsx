@@ -73,7 +73,7 @@ export default class Chart extends PureComponent {
           <ReferenceLine
             x={
               Number(
-                this.props.results.oneOffPurchaseDaysUntilFinancialIndependence
+                this.props.results.oneOffPurchaseCase.daysUntilFinancialFreedom
               ) /
                 365.25 +
               Number(this.props.age)
@@ -94,8 +94,8 @@ export default class Chart extends PureComponent {
           <ReferenceLine
             x={
               Number(
-                this.props.results
-                  .lowerMonthlySpendDaysUntilFinancialIndependence
+                this.props.results.lowerMonthlySpendCase
+                  .daysUntilFinancialFreedom
               ) /
                 365.25 +
               Number(this.props.age)
@@ -103,8 +103,30 @@ export default class Chart extends PureComponent {
             stroke="#75c2a6"
             label=""
           />
+
           <Line
-            name="Base case"
+            name="Lower daily spend"
+            type="monotone"
+            dataKey="lowerDailySpendResults"
+            dot={false}
+            stroke="#1a7451"
+            strokeWidth={4}
+            //activeDot={{ r: 8 }}
+          />
+          <ReferenceLine
+            x={
+              Number(
+                this.props.results.lowerDailySpendCase.daysUntilFinancialFreedom
+              ) /
+                365.25 +
+              Number(this.props.age)
+            }
+            stroke="#1a7451"
+            label=""
+          />
+
+          <Line
+            name="Current situation"
             type="monotone"
             dataKey="networth"
             dot={false}
@@ -114,7 +136,10 @@ export default class Chart extends PureComponent {
           />
           <ReferenceLine
             x={
-              Number(this.props.results.daysUntilFinancialIndependence) /
+              Number(
+                this.props.results.currentSituationCase
+                  .daysUntilFinancialFreedom
+              ) /
                 365.25 +
               Number(this.props.age)
             }
@@ -129,14 +154,21 @@ export default class Chart extends PureComponent {
 
 function convertData(data, startingAge) {
   return convertDataArray(
-    data.baseCaseResults,
-    data.lowerMonthlySpendResults,
-    data.oneOffPurchaseResults,
+    data.currentSituationCase.results,
+    data.lowerMonthlySpendCase.results,
+    data.lowerDailySpendCase.results,
+    data.oneOffPurchaseCase.results,
     startingAge
   );
 }
 
-function convertDataArray(dataArray1, dataArray2, dataArray3, startingAge) {
+function convertDataArray(
+  dataArray1,
+  dataArray2,
+  dataArray3,
+  dataArray4,
+  startingAge
+) {
   var output = [];
   if (dataArray1 == null) return output;
   var i;
@@ -144,7 +176,8 @@ function convertDataArray(dataArray1, dataArray2, dataArray3, startingAge) {
     output.push({
       networth: dataArray1[i],
       lowerMonthlySpendResults: dataArray2[i],
-      oneOffPurchaseResults: dataArray3[i],
+      lowerDailySpendResults: dataArray3[i],
+      oneOffPurchaseResults: dataArray4[i],
       age: i / 12 + Number(startingAge),
     });
   }

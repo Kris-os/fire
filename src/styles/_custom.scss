@@ -1,21 +1,39 @@
 $base-case-color: #ff9aa2;
-$higher-investment-color: #75c2a6;
-$one-off-purchase-color: #c7ceea;
+$monthly-habit-color: #75c2a6;
+$daily-habit-color: #1a7451;
+$one-off-purchase-color: #bcc6ec;
 $dark-color: #8ea3aa;
 
 $theme-colors: (
   "pink": $base-case-color,
   "primary": #2a8dad,
-  "green": $higher-investment-color,
+  "monthlyHabit": $monthly-habit-color,
+  "dailyHabit": $daily-habit-color,
   "blue": $one-off-purchase-color,
   "dark": $dark-color,
+  "cyan": #17a2b8,
 );
+
+.cyan {
+  color: #17a2b8;
+}
+
+.monthlyHabit {
+  color: $monthly-habit-color;
+}
+.dailyHabit {
+  color: $daily-habit-color;
+}
 
 .baseCaseColor {
   color: $base-case-color;
 }
-.increasedInvestmentColor {
-  color: $higher-investment-color;
+.monthlyHabitColor {
+  color: $monthly-habit-color;
+}
+
+.dailyHabitColor {
+  color: $daily-habit-color;
 }
 .oneOffPurchaseColor {
   color: $one-off-purchase-color;

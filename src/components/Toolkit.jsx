@@ -6,10 +6,14 @@ import { v4 as uuidv4 } from "uuid";
 import Results from "./Results";
 
 const resultsInitial = {
-  yearsMonthsDays1: {}, //[0, 0, 0],
-  yearsMonthsDays2: {},
-  yearsMonthsDays3: {},
-  yearsMonthsDays4: {},
+  currentSituationCase: {
+    yearsMonthsDays: { years: [], months: [], days: [] },
+  }, //[0, 0, 0],
+  lowerMonthlySpendCase: {
+    yearsMonthsDays: { years: [], months: [], days: [] },
+  },
+  lowerDailySpendCase: { yearsMonthsDays: { years: [], months: [], days: [] } },
+  oneOffPurchaseCase: { yearsMonthsDays: { years: [], months: [], days: [] } },
   lifeExpectancyResults: {
     lifeExpectancyYearsLeft: [],
     healthyLifeExpectancyYearsLeft: [],
@@ -20,13 +24,14 @@ const resultsInitial = {
 
 function Toolkit() {
   const debounceTime = 650;
-  const debugMode = false;
+  const debugMode = true;
   let unid = "";
   const [apiInputs, setInputs] = useState({
     age: 0,
     expenditure: 0,
     inheritanceToLeaveBehind: 0,
-    lowerSpend: 0,
+    lowerSpendMonthly: 0,
+    lowerSpendDaily: 0,
     netEarnings: 0,
     networth: 0,
     oneOffPurchase: 0,
@@ -91,7 +96,7 @@ function Toolkit() {
       .then(handleErrors)
       .then((response) => response.json())
       .then((data) => {
-        if (data.id == unid) {
+        if (data.id === unid) {
           setResults(data);
         }
       })
@@ -122,6 +127,7 @@ function Toolkit() {
             age={apiInputs.age}
             results={results}
             updateInputs={updateInputs}
+            expenditure={apiInputs.expenditure}
           />
         </Col>
       </Row>
