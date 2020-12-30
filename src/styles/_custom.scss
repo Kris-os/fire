@@ -3,6 +3,8 @@ $monthly-habit-color: #75c2a6;
 $daily-habit-color: #1a7451;
 $one-off-purchase-color: #bcc6ec;
 $dark-color: #8ea3aa;
+$cyan-color: #22b7ce;
+$dark-blue-color: #053f75;
 
 $theme-colors: (
   "pink": $base-case-color,
@@ -11,11 +13,15 @@ $theme-colors: (
   "dailyHabit": $daily-habit-color,
   "blue": $one-off-purchase-color,
   "dark": $dark-color,
-  "cyan": #17a2b8,
+  "cyan": $cyan-color,
 );
 
 .cyan {
-  color: #17a2b8;
+  color: $cyan-color;
+}
+
+.darkBlue {
+  color: $dark-blue-color;
 }
 
 .monthlyHabit {

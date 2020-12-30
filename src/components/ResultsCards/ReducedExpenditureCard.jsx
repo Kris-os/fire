@@ -40,7 +40,9 @@ function IncreasedInvestmentCard({
           Under this scenario, you spend{" "}
           <text className="bold">{lowerSpendCase.percentHleWorking}%</text> of
           your healthy life expectancy working, and{" "}
-          <text className="bold">{1 - lowerSpendCase.percentHleWorking}%</text>{" "}
+          <text className="bold">
+            {100 - lowerSpendCase.percentHleWorking}%
+          </text>{" "}
           financially free.
           <br />
           <br />

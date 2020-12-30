@@ -7,7 +7,7 @@ import ReducedExpenditureCard from "./ResultsCards/ReducedExpenditureCard";
 import OneOffPurchaseCard from "./ResultsCards/OneOffPurchaseCard";
 import LifestyleCard from "./ResultsCards/LifestyleCard";
 
-function Results({ age, results, updateInputs, expenditure }) {
+function Results({ age, results, updateInputs, expenditure, netEarnings }) {
   function GetImprovement(casePercentHleWorking) {
     let num =
       results.currentSituationCase.percentHleWorking - casePercentHleWorking;
@@ -42,11 +42,15 @@ function Results({ age, results, updateInputs, expenditure }) {
           frequency={"daily"}
           themeColor={"dailyHabit"}
         />
+        <LifestyleCard
+          expenditure={expenditure}
+          updateInputs={updateInputs}
+          netEarnings={netEarnings}
+        />
         <OneOffPurchaseCard
           oneOffPurchaseCase={results.oneOffPurchaseCase}
           updateInputs={updateInputs}
         />
-        <LifestyleCard expenditure={expenditure} updateInputs={updateInputs} />
       </CardDeck>
       <br />
       <h4 className="marginTopAndBottomLarge">

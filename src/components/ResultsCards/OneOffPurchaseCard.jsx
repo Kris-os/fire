@@ -10,8 +10,12 @@ function OneOffPurchase({ oneOffPurchaseCase, updateInputs }) {
           <h4 className="bold oneOffPurchaseColor">
             Opportunity cost of spending
           </h4>
-          The opportunity cost of spending money is the amount of time you have
-          financially free. A purchase of
+          The opportunity cost of spending money is your time. Saving and
+          investing instead of spending means more of your lifetime financially
+          free.
+          <br />
+          <br />
+          A purchase of
           <NumberInput inputId="oneOffPurchase" updateInputs={updateInputs} />
           means less financial freedom of
           <div>{"\n"}</div>
@@ -27,6 +31,15 @@ function OneOffPurchase({ oneOffPurchaseCase, updateInputs }) {
             {oneOffPurchaseCase.yearsMonthsDays.days ?? null}
           </text>{" "}
           days
+          <br />
+          <br />
+          <text className="italic">
+            Whilst this calculation is a useful to understand the opportunity
+            cost of spending money as measured in your time, it is rare that our
+            purchases are truly one-off. Consider a phone or a laptop, that
+            needs replacing every few years. Most purchases are better modelled
+            as a change in lifestyle or a habit.{" "}
+          </text>
           {/* <br />
           <br />
           Under this scenario, you spend{" "}

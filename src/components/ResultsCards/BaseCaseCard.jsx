@@ -40,13 +40,13 @@ function BaseCaseCard({ currentSituationCase }) {
           <br />({moment(ffDate()).format("MMMM Do YYYY")})
           <br />
           <br />
-          Under your current situation inputs, you spend{" "}
+          Under your current situation, you spend{" "}
           <text className="bold">
             {currentSituationCase.percentHleWorking}%
           </text>{" "}
           of your remaining healthy life expectancy working, and{" "}
           <text className="bold">
-            {1 - currentSituationCase.percentHleWorking}%
+            {100 - currentSituationCase.percentHleWorking}%
           </text>{" "}
           financially free.
         </Card.Text>

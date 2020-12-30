@@ -55,7 +55,7 @@ function Inputs(props) {
         </Row>
 
         <Row className="paddingTopAndBottomSmall">
-          <Col sm={firstColumnWidth}>Net earnings per year</Col>
+          <Col sm={firstColumnWidth}>Earnings per year (after tax)</Col>
           <Col sm={secondColumnWidth}>
             <NumberInput
               inputId="netEarnings"
@@ -171,6 +171,11 @@ function Inputs(props) {
 
         <Row className="paddingTopAndBottomSmall">
           <Col sm={firstColumnWidth}>You live in a developed country</Col>
+          <Col sm={secondColumnWidth} />
+        </Row>
+
+        <Row className="paddingTopAndBottomSmall">
+          <Col sm={firstColumnWidth}>Everything is linked to inflation</Col>
           <Col sm={secondColumnWidth} />
         </Row>
       </Form>

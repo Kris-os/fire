@@ -24,10 +24,12 @@ const resultsInitial = {
 
 function Toolkit() {
   const debounceTime = 650;
-  const debugMode = true;
+  const debugMode = false;
   let unid = "";
   const [apiInputs, setInputs] = useState({
     age: 0,
+    alternateLifestyle1: 0,
+    alternateLifestyle2: 0,
     expenditure: 0,
     inheritanceToLeaveBehind: 0,
     lowerSpendMonthly: 0,
@@ -128,6 +130,7 @@ function Toolkit() {
             results={results}
             updateInputs={updateInputs}
             expenditure={apiInputs.expenditure}
+            netEarnings={apiInputs.netEarnings}
           />
         </Col>
       </Row>
