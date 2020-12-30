@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/fire/static/css/main.07a4e2c2.chunk.css",
-    "main.js": "/fire/static/js/main.d39d44a5.chunk.js",
-    "main.js.map": "/fire/static/js/main.d39d44a5.chunk.js.map",
+    "main.css": "/fire/static/css/main.0fb48685.chunk.css",
+    "main.js": "/fire/static/js/main.befd5add.chunk.js",
+    "main.js.map": "/fire/static/js/main.befd5add.chunk.js.map",
     "runtime-main.js": "/fire/static/js/runtime-main.47ab84f4.js",
     "runtime-main.js.map": "/fire/static/js/runtime-main.47ab84f4.js.map",
-    "static/js/2.2f588ce3.chunk.js": "/fire/static/js/2.2f588ce3.chunk.js",
-    "static/js/2.2f588ce3.chunk.js.map": "/fire/static/js/2.2f588ce3.chunk.js.map",
+    "static/js/2.56e7f8bf.chunk.js": "/fire/static/js/2.56e7f8bf.chunk.js",
+    "static/js/2.56e7f8bf.chunk.js.map": "/fire/static/js/2.56e7f8bf.chunk.js.map",
     "index.html": "/fire/index.html",
-    "precache-manifest.8fe7c12ad8cb485920791e4909f82e7b.js": "/fire/precache-manifest.8fe7c12ad8cb485920791e4909f82e7b.js",
+    "precache-manifest.8a0c5b44bc38abefa5d3684c39179e56.js": "/fire/precache-manifest.8a0c5b44bc38abefa5d3684c39179e56.js",
     "service-worker.js": "/fire/service-worker.js",
-    "static/css/main.07a4e2c2.chunk.css.map": "/fire/static/css/main.07a4e2c2.chunk.css.map",
-    "static/js/2.2f588ce3.chunk.js.LICENSE.txt": "/fire/static/js/2.2f588ce3.chunk.js.LICENSE.txt",
+    "static/css/main.0fb48685.chunk.css.map": "/fire/static/css/main.0fb48685.chunk.css.map",
+    "static/js/2.56e7f8bf.chunk.js.LICENSE.txt": "/fire/static/js/2.56e7f8bf.chunk.js.LICENSE.txt",
     "static/media/OpulIcon.png": "/fire/static/media/OpulIcon.f62d8699.png"
   },
   "entrypoints": [
     "static/js/runtime-main.47ab84f4.js",
-    "static/js/2.2f588ce3.chunk.js",
-    "static/css/main.07a4e2c2.chunk.css",
-    "static/js/main.d39d44a5.chunk.js"
+    "static/js/2.56e7f8bf.chunk.js",
+    "static/css/main.0fb48685.chunk.css",
+    "static/js/main.befd5add.chunk.js"
   ]
 }
