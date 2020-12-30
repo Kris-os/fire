@@ -1,6 +1,7 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 import moment from "moment";
+import YearsMonthsDays from "../YearsMonthsDays";
 
 function BaseCaseCard({ currentSituationCase }) {
   Date.prototype.addDays = function (days) {
@@ -25,18 +26,9 @@ function BaseCaseCard({ currentSituationCase }) {
               {currentSituationCase.financialFreedomAge}
             </text>
           </h4>
-          <text className="bold">
-            {currentSituationCase.yearsMonthsDays.years}{" "}
-          </text>
-          years&#160;&#160;
-          <text className="bold">
-            {currentSituationCase.yearsMonthsDays.months}{" "}
-          </text>
-          months&#160;&#160;
-          <text className="bold">
-            {currentSituationCase.yearsMonthsDays.days}{" "}
-          </text>{" "}
-          days.
+          <YearsMonthsDays
+            yearsMonthsDays={currentSituationCase.yearsMonthsDays}
+          />
           <br />({moment(ffDate()).format("MMMM Do YYYY")})
           <br />
           <br />

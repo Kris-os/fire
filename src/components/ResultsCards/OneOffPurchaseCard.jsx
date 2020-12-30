@@ -1,6 +1,7 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 import NumberInput from "../NumberInput";
+import YearsMonthsDays from "../YearsMonthsDays";
 
 function OneOffPurchase({ oneOffPurchaseCase, updateInputs }) {
   return (
@@ -18,20 +19,10 @@ function OneOffPurchase({ oneOffPurchaseCase, updateInputs }) {
           A purchase of
           <NumberInput inputId="oneOffPurchase" updateInputs={updateInputs} />
           means less financial freedom of
-          <div>{"\n"}</div>
-          <text className="bold">
-            {oneOffPurchaseCase.yearsMonthsDays.years ?? null}
-          </text>{" "}
-          years&#160;&#160;
-          <text className="bold">
-            {oneOffPurchaseCase.yearsMonthsDays.months ?? null}
-          </text>{" "}
-          months&#160;&#160;
-          <text className="bold">
-            {oneOffPurchaseCase.yearsMonthsDays.days ?? null}
-          </text>{" "}
-          days
           <br />
+          <YearsMonthsDays
+            yearsMonthsDays={oneOffPurchaseCase.yearsMonthsDays}
+          />
           <br />
           <text className="italic">
             Whilst this calculation is a useful to understand the opportunity

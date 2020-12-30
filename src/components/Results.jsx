@@ -46,6 +46,8 @@ function Results({ age, results, updateInputs, expenditure, netEarnings }) {
           expenditure={expenditure}
           updateInputs={updateInputs}
           netEarnings={netEarnings}
+          alternateLifestyle1Case={results.alternateLifestyle1Case}
+          alternateLifestyle2Case={results.alternateLifestyle2Case}
         />
         <OneOffPurchaseCard
           oneOffPurchaseCase={results.oneOffPurchaseCase}
@@ -54,8 +56,7 @@ function Results({ age, results, updateInputs, expenditure, netEarnings }) {
       </CardDeck>
       <br />
       <h4 className="marginTopAndBottomLarge">
-        Play around with model inputs to gain an intuition on how financial
-        freedom works for you:
+        Your journey to financial freedom visualised:
       </h4>
       <div
         className="paddingBottomLarge"

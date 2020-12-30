@@ -8,12 +8,18 @@ import Results from "./Results";
 const resultsInitial = {
   currentSituationCase: {
     yearsMonthsDays: { years: [], months: [], days: [] },
-  }, //[0, 0, 0],
+  },
   lowerMonthlySpendCase: {
     yearsMonthsDays: { years: [], months: [], days: [] },
   },
   lowerDailySpendCase: { yearsMonthsDays: { years: [], months: [], days: [] } },
   oneOffPurchaseCase: { yearsMonthsDays: { years: [], months: [], days: [] } },
+  alternateLifestyle1Case: {
+    yearsMonthsDays: { years: [], months: [], days: [] },
+  },
+  alternateLifestyle2Case: {
+    yearsMonthsDays: { years: [], months: [], days: [] },
+  },
   lifeExpectancyResults: {
     lifeExpectancyYearsLeft: [],
     healthyLifeExpectancyYearsLeft: [],

@@ -1,8 +1,15 @@
 import React, { useState } from "react";
 import { Card } from "react-bootstrap";
 import NumberInput from "../NumberInput";
+import YearsMonthsDays from "../YearsMonthsDays";
 
-function LifestyleCard({ updateInputs, expenditure, netEarnings }) {
+function LifestyleCard({
+  updateInputs,
+  expenditure,
+  netEarnings,
+  alternateLifestyle1Case,
+  alternateLifestyle2Case,
+}) {
   const [lifestyleInputs, setLifestyleInputs] = useState({
     alternateLifestyle1: 0,
     alternateLifestyle2: 0,
@@ -13,24 +20,34 @@ function LifestyleCard({ updateInputs, expenditure, netEarnings }) {
     updateInputs(inputId, value);
   };
 
+  const isYearsMonthsDaysPositive = (yearsMonthsDays) => {
+    if (yearsMonthsDays === null) return null;
+    if (
+      yearsMonthsDays.years + yearsMonthsDays.months + yearsMonthsDays.days >
+      0
+    )
+      return true;
+    return false;
+  };
+
   return (
     <Card className="border-3 marginTopAndBottomLarge" border="cyan">
       <Card.Body>
         <Card.Text>
           <h4 className="bold cyan">Lifestyle tool</h4>
-          The main lever in your immediate control to change when you reach
-          financial freedom is the cost of your lifestyle. A simpler lifestyle
-          means more of your lifetime financially free. Use this tool to help
-          decide on the best balance for you of these competing goals. A simpler
-          lifestyle to see how much more freedom you get, a more luxurious
-          lifestyle to see what is affordable.
+          The cost of your lifestyle has a big impact on your financial freedom.
+          There is a balance between more time financially free and a more
+          expensive lifestyle. Use this tool to help decide the best balance for
+          you.
           <br />
           <br />
           From your Current Situation inputs your current lifestyle is{" "}
-          <text className="bold">{expenditure}</text> per year. Your net
+          <text className="bold">{expenditure}</text> per year.
+          {/* Your net
           earnings are <text className="bold">{netEarnings}</text> per year,
-          meaning savings of{" "}
-          <text className="bold">{netEarnings - expenditure}</text> per year.
+          meaning  */}
+          (saving <text className="bold">{netEarnings - expenditure}</text> per
+          year).
           <br />
           <br />
           <div className="cyan">
@@ -40,12 +57,20 @@ function LifestyleCard({ updateInputs, expenditure, netEarnings }) {
               updateInputs={updateLifeStyleInputs}
             />
             <div className="italic">
-              (savings of{" "}
+              (saving{" "}
               <text className="bold">
                 {netEarnings - lifestyleInputs.alternateLifestyle1}
               </text>{" "}
-              per year).
+              per year). <br />
             </div>
+            Means more time financially free by:
+            <YearsMonthsDays
+              yearsMonthsDays={
+                alternateLifestyle1Case === null
+                  ? null
+                  : alternateLifestyle1Case.yearsMonthsDays
+              }
+            />
           </div>
           <br />
           <div className="darkBlue">
@@ -55,12 +80,20 @@ function LifestyleCard({ updateInputs, expenditure, netEarnings }) {
               updateInputs={updateLifeStyleInputs}
             />
             <div className="italic">
-              (savings of{" "}
+              (saving{" "}
               <text className="bold">
                 {netEarnings - lifestyleInputs.alternateLifestyle2}
               </text>{" "}
               per year).
             </div>
+            Means more time financially free by:
+            <YearsMonthsDays
+              yearsMonthsDays={
+                alternateLifestyle2Case === null
+                  ? null
+                  : alternateLifestyle2Case.yearsMonthsDays
+              }
+            />
           </div>
         </Card.Text>
       </Card.Body>

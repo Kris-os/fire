@@ -126,6 +126,24 @@ export default class Chart extends PureComponent {
           />
 
           <Line
+            name="Alternate lifestyle 1"
+            type="monotone"
+            dataKey="alternateLifestyle1Results"
+            dot={false}
+            stroke="#22b7ce"
+            strokeWidth={4}
+          />
+
+          <Line
+            name="Alternate lifestyle 2"
+            type="monotone"
+            dataKey="alternateLifestyle2Results"
+            dot={false}
+            stroke="#053f75"
+            strokeWidth={4}
+          />
+
+          <Line
             name="Current situation"
             type="monotone"
             dataKey="networth"
@@ -158,6 +176,12 @@ function convertData(data, startingAge) {
     data.lowerMonthlySpendCase.results,
     data.lowerDailySpendCase.results,
     data.oneOffPurchaseCase.results,
+    data.alternateLifestyle1Case === null
+      ? null
+      : data.alternateLifestyle1Case.results,
+    data.alternateLifestyle2Case === null
+      ? null
+      : data.alternateLifestyle2Case.results,
     startingAge
   );
 }
@@ -167,6 +191,8 @@ function convertDataArray(
   dataArray2,
   dataArray3,
   dataArray4,
+  dataArray5,
+  dataArray6,
   startingAge
 ) {
   var output = [];
@@ -178,6 +204,8 @@ function convertDataArray(
       lowerMonthlySpendResults: dataArray2[i],
       lowerDailySpendResults: dataArray3[i],
       oneOffPurchaseResults: dataArray4[i],
+      alternateLifestyle1Results: dataArray5 === null ? null : dataArray5[i],
+      alternateLifestyle2Results: dataArray6 === null ? null : dataArray6[i],
       age: i / 12 + Number(startingAge),
     });
   }

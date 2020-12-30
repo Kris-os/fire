@@ -2,6 +2,7 @@ import React from "react";
 import { Card } from "react-bootstrap";
 import NumberInput from "../NumberInput";
 import { capitaliseFirstLetter } from "../../Util.js";
+import YearsMonthsDays from "../YearsMonthsDays";
 
 function IncreasedInvestmentCard({
   updateInputs,
@@ -24,18 +25,7 @@ function IncreasedInvestmentCard({
           />
           {frequency} increases the time you have financially free by:
           <br />
-          <text className="bold">
-            {lowerSpendCase.yearsMonthsDays.years}
-          </text>{" "}
-          years&#160;&#160;
-          <text className="bold">
-            {lowerSpendCase.yearsMonthsDays.months}
-          </text>{" "}
-          months&#160;&#160;
-          <text className="bold">
-            {lowerSpendCase.yearsMonthsDays.days}
-          </text>{" "}
-          days <br />
+          <YearsMonthsDays yearsMonthsDays={lowerSpendCase.yearsMonthsDays} />
           <br />
           Under this scenario, you spend{" "}
           <text className="bold">{lowerSpendCase.percentHleWorking}%</text> of
