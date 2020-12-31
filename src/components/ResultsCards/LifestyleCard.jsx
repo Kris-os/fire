@@ -65,11 +65,7 @@ function LifestyleCard({
             </div>
             Means more time financially free by:
             <YearsMonthsDays
-              yearsMonthsDays={
-                alternateLifestyle1Case === null
-                  ? null
-                  : alternateLifestyle1Case.yearsMonthsDays
-              }
+              yearsMonthsDays={alternateLifestyle1Case?.yearsMonthsDays}
             />
           </div>
           <br />
@@ -88,11 +84,7 @@ function LifestyleCard({
             </div>
             Means more time financially free by:
             <YearsMonthsDays
-              yearsMonthsDays={
-                alternateLifestyle2Case === null
-                  ? null
-                  : alternateLifestyle2Case.yearsMonthsDays
-              }
+              yearsMonthsDays={alternateLifestyle2Case?.yearsMonthsDays}
             />
           </div>
         </Card.Text>

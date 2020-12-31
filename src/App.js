@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Toolkit from "./components/Toolkit";
 import Header from "./components/Header";
 import Homepage from "./components/Homepage";
+import AboutPage from "./components/AboutPage";
 import "./styles/app.scss";
 import { HashRouter, Switch, Route } from "react-router-dom";
 import * as consts from "./Constants.js";
@@ -24,6 +25,7 @@ function App() {
             render={() => <Homepage setActivePage={setActivePage} />}
           />
           <Route path={"/" + consts.toolkitPageId} component={Toolkit} />
+          <Route path={"/about"} component={AboutPage} />
         </Switch>
       </div>
     </HashRouter>
