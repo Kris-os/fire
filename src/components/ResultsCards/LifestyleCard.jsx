@@ -63,7 +63,7 @@ function LifestyleCard({
               </text>{" "}
               per year). <br />
             </div>
-            Means more time financially free by:
+            Means more freedom of:
             <YearsMonthsDays
               yearsMonthsDays={alternateLifestyle1Case?.yearsMonthsDays}
             />
@@ -82,7 +82,7 @@ function LifestyleCard({
               </text>{" "}
               per year).
             </div>
-            Means more time financially free by:
+            Means more freedom of:
             <YearsMonthsDays
               yearsMonthsDays={alternateLifestyle2Case?.yearsMonthsDays}
             />

@@ -7,7 +7,7 @@ function YearsMonthsDays({ yearsMonthsDays }) {
       years&#160;&#160;
       <text className="bold">{yearsMonthsDays?.months} </text>
       months&#160;&#160;
-      <text className="bold">{yearsMonthsDays?.days} </text> days.
+      <text className="bold">{yearsMonthsDays?.days} </text>days.
     </div>
   );
 }

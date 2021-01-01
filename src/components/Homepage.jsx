@@ -23,9 +23,13 @@ function Homepage({ setActivePage }) {
           >
             <h4 className="bold">Opul</h4>
             <h5>
-              A platform to help you reach financial freedom. Giving you
-              financial tools used by billion dollar investors - we do the
-              complicated math, so you can make better decisions.
+              A platform to help you make{" "}
+              <text className="bold cyan">optimal financial decisions</text> to
+              best reach your{" "}
+              <text className="bold baseCaseColor">financial freedom</text>{" "}
+              goals. Giving you the same financial tools that billion dollar
+              investors use - we do the complicated math, so you can make better
+              decisions.
             </h5>
 
             <br />
@@ -42,26 +46,19 @@ function Homepage({ setActivePage }) {
               our Governments provide pensions.{" "}
               <text className="bold">
                 However, it is possible to reach financial freedom much sooner
-                than this.{" "}
-              </text>
-              Across most of the world, 10 years of work is enough to keep you
-              sheltered, fed and happy for the rest of your days.
+                than this
+              </text>{" "}
+              - find out exactly how soon by using our{" "}
+              <Link to={"/" + consts.toolkitPageId}>toolkit</Link>, and answer
+              other questions such as:
               <br />
-              <br />
-              You have a choice how simple or luxurious your lifestyle is. This
-              is actually the <text className="bold">same choice</text> as the
-              number of years you will have to work. This is shown in the
-              [Lifestyle] section.
-              <br />
-              <br />
-              The Opul toolkit helps you make this decision and answer other
-              questions such as:
               <br />
               <ul className="italic">
-                <li>How much wealth do I need?</li>
+                <li>How much wealth is needed to support a given lifestyle?</li>
                 <li>When can I reach Financial Freedom? </li>
                 <li>
-                  What is the trade-off between lifestyle and years worked?
+                  What is the precise opportunity cost of a more expensive
+                  lifestyle measured in freedom?
                 </li>
               </ul>
             </h5>

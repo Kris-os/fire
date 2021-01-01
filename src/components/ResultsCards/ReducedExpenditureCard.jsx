@@ -23,7 +23,7 @@ function IncreasedInvestmentCard({
             inputId={`lowerSpend${capitaliseFirstLetter(frequency)}`}
             updateInputs={updateInputs}
           />
-          {frequency} increases the time you have financially free by:
+          {frequency} increases freedom by:
           <br />
           <YearsMonthsDays yearsMonthsDays={lowerSpendCase.yearsMonthsDays} />
           <br />
