@@ -2,7 +2,6 @@
 import React, { useEffect } from "react";
 import { Formik, Form, useFormikContext } from "formik";
 import * as Yup from "yup";
-import jQuery from "jquery";
 import { Col, Container, Row } from "react-bootstrap";
 
 //my components
@@ -51,8 +50,7 @@ const FormikWrapper = ({
   netEarnings,
 }) => {
   const AutoSubmitToken = () => {
-    // Grab values and submitForm from context
-    const { values, submitForm } = useFormikContext();
+    const { values } = useFormikContext();
     useEffect(() => {
       var validationResult = validationSchema.validate(values);
       validationResult.then(
@@ -67,36 +65,6 @@ const FormikWrapper = ({
     return null;
   };
 
-  // const ValueChangeListener = () => {
-  //   const { values, errors } = useFormikContext();
-  //   const valuesAndErrors = GetValuesAndErrors(values, errors);
-
-  //   useEffect(() => {
-  //     handleApiInputsChange(valuesAndErrors);
-  //   }, [valuesAndErrors]);
-
-  //   return null;
-  // };
-
-  // function GetValuesAndErrors(values, errors) {
-  //   var output = values;
-  //   output.errors = errors;
-
-  //   return output;
-  // }
-
-  // const ErrorListener = () => {
-  //   const { errors } = useFormikContext();
-
-  //   useEffect(() => {
-  //     if (jQuery.isEmptyObject(errors)) {
-  //       handleFormErrorChange(false);
-  //     } else handleFormErrorChange(true);
-  //   }, [errors]);
-
-  //   return null;
-  // };
-
   return (
     <section>
       <Formik
@@ -108,9 +76,7 @@ const FormikWrapper = ({
             <Container fluid>
               <Row className="align-items-start">
                 <Col lg="5" className="padding30">
-                  <Inputs
-                  // className="paddingTopAndBottomLarge"
-                  />
+                  <Inputs />
                 </Col>
                 <Col lg="7" className="padding30">
                   <Results
@@ -129,13 +95,6 @@ const FormikWrapper = ({
           </Form>
         )}
       </Formik>
-
-      {/* <hr />
-
-      <div>
-        State: <pre>{JSON.stringify(formikState, null, 2)}</pre> IsError:{" "}
-        <pre>{JSON.stringify(isError, null, 2)}</pre>{" "}
-      </div> */}
     </section>
   );
 };
