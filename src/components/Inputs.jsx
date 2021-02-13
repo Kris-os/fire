@@ -24,7 +24,7 @@ function Inputs() {
         <Row className="paddingTopAndBottomSmall">
           <Col sm={firstColumnWidth}>Age</Col>
           <Col sm={secondColumnWidth}>
-            <NumberInput fieldName="age" />
+            <NumberInput fieldName="age" decimals={0} />
           </Col>
         </Row>
         <Row className="paddingTopAndBottomSmall">
