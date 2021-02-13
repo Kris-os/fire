@@ -5,7 +5,6 @@ import { capitaliseFirstLetter } from "../../Util.js";
 import YearsMonthsDays from "../YearsMonthsDays";
 
 function IncreasedInvestmentCard({
-  updateInputs,
   lowerSpendCase,
   frequency,
   improvement,
@@ -20,8 +19,7 @@ function IncreasedInvestmentCard({
           </h4>
           Reducing your lifestyle by
           <NumberInput
-            inputId={`lowerSpend${capitaliseFirstLetter(frequency)}`}
-            updateInputs={updateInputs}
+            fieldName={`lowerSpend${capitaliseFirstLetter(frequency)}`}
           />
           {frequency} increases freedom by:
           <br />

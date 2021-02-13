@@ -1,31 +1,30 @@
-import React, { useState } from "react";
-import NumericInput from "react-numeric-input";
+import React from "react";
+import { Field } from "formik";
+import { ErrorMessage } from "formik";
+import NumberInputDecimalRestricted from "./NumberInputDecimalRestricted";
 
-function NumberInput(props) {
-  const [value, setValue] = useState(props.initialValue);
-
-  function onInputChange(event) {
-    var num = event;
-    if (num != null) num = num.toFixed(props.precision);
-    if (num != null && num > props.max) num = props.max;
-    if (num != null && num < props.min) num = props.min;
-    setValue(num);
-    props.updateInputs(props.inputId, num);
-  }
-
-  return (
-    <NumericInput
-      className="form-control"
-      min={props.min}
-      max={props.max}
-      onChange={onInputChange.bind(this)}
-      precision={props.precision}
-      value={value}
-      step={props.step}
-      style={false}
-      snap
-    />
-  );
-}
+const NumberInput = ({ fieldName, decimals }) => (
+  <Field name={fieldName} id={fieldName} type="number">
+    {({ field, form: { values, setFieldValue } }) => (
+      <div>
+        {/* <label htmlFor={fieldName} className={"label-color"}>
+          {fieldName}
+        </label> */}
+        <div>
+          <NumberInputDecimalRestricted
+            initialValue={values[fieldName]}
+            name={fieldName}
+            {...field}
+            decimals={decimals}
+            fireResult={(number) => setFieldValue(fieldName, number)}
+          />
+          <div className="error">
+            <ErrorMessage name={fieldName} />
+          </div>
+        </div>
+      </div>
+    )}
+  </Field>
+);
 
 export default NumberInput;

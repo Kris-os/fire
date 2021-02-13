@@ -7,7 +7,14 @@ import ReducedExpenditureCard from "./ResultsCards/ReducedExpenditureCard";
 import OneOffPurchaseCard from "./ResultsCards/OneOffPurchaseCard";
 import LifestyleCard from "./ResultsCards/LifestyleCard";
 
-function Results({ age, results, updateInputs, expenditure, netEarnings }) {
+function Results({
+  age,
+  alternateLifestyle1,
+  alternateLifestyle2,
+  results,
+  expenditure,
+  netEarnings,
+}) {
   function GetImprovement(casePercentHleWorking) {
     let num =
       results.currentSituationCase.percentHleWorking - casePercentHleWorking;
@@ -26,7 +33,6 @@ function Results({ age, results, updateInputs, expenditure, netEarnings }) {
         <BaseCaseCard currentSituationCase={results.currentSituationCase} />
         <ReducedExpenditureCard
           lowerSpendCase={results.lowerMonthlySpendCase}
-          updateInputs={updateInputs}
           improvement={GetImprovement(
             results.lowerMonthlySpendCase.percentHleWorking
           )}
@@ -35,7 +41,6 @@ function Results({ age, results, updateInputs, expenditure, netEarnings }) {
         />
         <ReducedExpenditureCard
           lowerSpendCase={results.lowerDailySpendCase}
-          updateInputs={updateInputs}
           improvement={GetImprovement(
             results.lowerDailySpendCase.percentHleWorking
           )}
@@ -44,15 +49,13 @@ function Results({ age, results, updateInputs, expenditure, netEarnings }) {
         />
         <LifestyleCard
           expenditure={expenditure}
-          updateInputs={updateInputs}
           netEarnings={netEarnings}
           alternateLifestyle1Case={results.alternateLifestyle1Case}
           alternateLifestyle2Case={results.alternateLifestyle2Case}
+          alternateLifestyle1={alternateLifestyle1}
+          alternateLifestyle2={alternateLifestyle2}
         />
-        <OneOffPurchaseCard
-          oneOffPurchaseCase={results.oneOffPurchaseCase}
-          updateInputs={updateInputs}
-        />
+        <OneOffPurchaseCard oneOffPurchaseCase={results.oneOffPurchaseCase} />
       </CardDeck>
       <br />
       <h4 className="marginTopAndBottomLarge">
