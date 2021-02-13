@@ -17,7 +17,7 @@ function OneOffPurchase({ oneOffPurchaseCase, updateInputs }) {
           <br />
           <br />
           A purchase of
-          <NumberInput inputId="oneOffPurchase" updateInputs={updateInputs} />
+          <NumberInput fieldName="oneOffPurchase" />
           means less freedom of
           <br />
           <YearsMonthsDays

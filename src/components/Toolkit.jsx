@@ -1,9 +1,8 @@
 import React, { useState, useCallback, useEffect } from "react";
-import Inputs from "./Inputs";
 import * as consts from "../Constants.js";
-import { Col, Container, Row } from "react-bootstrap";
+
 import { v4 as uuidv4 } from "uuid";
-import Results from "./Results";
+import FormikWrapper from "./FormikWrapper";
 
 const resultsInitial = {
   currentSituationCase: {
@@ -30,9 +29,9 @@ const resultsInitial = {
 
 function Toolkit() {
   const debounceTime = 650;
-  const debugMode = false;
+  const debugMode = true;
   let unid = "";
-  const [apiInputs, setInputs] = useState({
+  const [apiInputs, setApiInputs] = useState({
     age: 0,
     alternateLifestyle1: 0,
     alternateLifestyle2: 0,
@@ -50,16 +49,21 @@ function Toolkit() {
     statePensionAmountAssumption: consts.initialstatePensionAmountAssumption,
   });
 
+  const handleApiInputsChange = (values) => {
+    setApiInputs(values);
+  };
+
+  const [isFormError, setIsFormError] = useState(false);
+  const handleFormErrorChange = (isFormError) => {
+    setIsFormError(isFormError);
+  };
+
   const [results, setResults] = useState(resultsInitial);
 
   const debouncedRunCalcs = useCallback(
     consts.debounce((apiInputs) => runCalcs(apiInputs), debounceTime),
     []
   );
-
-  const updateInputs = (inputId, value) => {
-    setInputs((prevState) => ({ ...prevState, [inputId]: value }));
-  };
 
   const getUrl = () => {
     if (debugMode) return "http://localhost:7071/api/OpulFunction";
@@ -71,7 +75,7 @@ function Toolkit() {
   };
 
   useEffect(() => {
-    if (apiInputs.expenditure > 0) {
+    if (!isFormError) {
       debouncedRunCalcs(apiInputs);
     } else setResults(resultsInitial);
   }, [apiInputs]);
@@ -122,25 +126,17 @@ function Toolkit() {
   }
 
   return (
-    <Container fluid>
-      <Row className="align-items-start">
-        <Col lg="5" className="padding30">
-          <Inputs
-            // className="paddingTopAndBottomLarge"
-            updateInputs={updateInputs}
-          />
-        </Col>
-        <Col lg="7" className="padding30">
-          <Results
-            age={apiInputs.age}
-            results={results}
-            updateInputs={updateInputs}
-            expenditure={apiInputs.expenditure}
-            netEarnings={apiInputs.netEarnings}
-          />
-        </Col>
-      </Row>
-    </Container>
+    <FormikWrapper
+      age={apiInputs.age}
+      apiInputs={apiInputs}
+      handleApiInputsChange={handleApiInputsChange}
+      handleFormErrorChange={handleFormErrorChange}
+      results={results}
+      expenditure={apiInputs.expenditure}
+      netEarnings={apiInputs.netEarnings}
+      alternateLifestyle1={apiInputs.alternateLifestyle1}
+      alternateLifestyle2={apiInputs.alternateLifestyle2}
+    ></FormikWrapper>
   );
 }
 
