@@ -1,5 +1,6 @@
 import React, { useState, useCallback, useEffect } from "react";
 import * as consts from "../Constants.js";
+import jQuery from "jquery";
 
 import { v4 as uuidv4 } from "uuid";
 import FormikWrapper from "./FormikWrapper";
@@ -53,9 +54,8 @@ function Toolkit() {
     setApiInputs(values);
   };
 
-  const [isFormError, setIsFormError] = useState(false);
-  const handleFormErrorChange = (isFormError) => {
-    setIsFormError(isFormError);
+  const handleFormErrorChange = () => {
+    setResults(resultsInitial);
   };
 
   const [results, setResults] = useState(resultsInitial);
@@ -75,7 +75,7 @@ function Toolkit() {
   };
 
   useEffect(() => {
-    if (!isFormError) {
+    if (jQuery.isEmptyObject(apiInputs.errors)) {
       debouncedRunCalcs(apiInputs);
     } else setResults(resultsInitial);
   }, [apiInputs]);

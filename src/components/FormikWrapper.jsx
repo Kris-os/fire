@@ -1,5 +1,5 @@
 //libraries
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Formik, Form, useFormikContext } from "formik";
 import * as Yup from "yup";
 import jQuery from "jquery";
@@ -21,7 +21,7 @@ const initialFormikState = {
 
 const validationSchema = Yup.object({
   age: Yup.number()
-    .positive("Must be positive")
+    .min(0, "Must be positive")
     .max(89, "Must be 89 or less")
     .required("Required"),
   expenditure: Yup.number().positive("Must be positive").required("Required"),
@@ -50,29 +50,52 @@ const FormikWrapper = ({
   expenditure,
   netEarnings,
 }) => {
-  const ValueChangeListener = () => {
-    const { values } = useFormikContext();
-    //formik doesn't update values if there's an error
-    //this component is here to pull state out of Formik
-
+  const AutoSubmitToken = () => {
+    // Grab values and submitForm from context
+    const { values, submitForm } = useFormikContext();
     useEffect(() => {
-      handleApiInputsChange(values);
+      var validationResult = validationSchema.validate(values);
+      validationResult.then(
+        function (result) {
+          handleApiInputsChange(result);
+        },
+        function (err) {
+          handleFormErrorChange();
+        }
+      );
     }, [values]);
-
     return null;
   };
 
-  const ErrorListener = () => {
-    const { errors } = useFormikContext();
+  // const ValueChangeListener = () => {
+  //   const { values, errors } = useFormikContext();
+  //   const valuesAndErrors = GetValuesAndErrors(values, errors);
 
-    useEffect(() => {
-      if (jQuery.isEmptyObject(errors)) {
-        handleFormErrorChange(false);
-      } else handleFormErrorChange(true);
-    }, [errors]);
+  //   useEffect(() => {
+  //     handleApiInputsChange(valuesAndErrors);
+  //   }, [valuesAndErrors]);
 
-    return null;
-  };
+  //   return null;
+  // };
+
+  // function GetValuesAndErrors(values, errors) {
+  //   var output = values;
+  //   output.errors = errors;
+
+  //   return output;
+  // }
+
+  // const ErrorListener = () => {
+  //   const { errors } = useFormikContext();
+
+  //   useEffect(() => {
+  //     if (jQuery.isEmptyObject(errors)) {
+  //       handleFormErrorChange(false);
+  //     } else handleFormErrorChange(true);
+  //   }, [errors]);
+
+  //   return null;
+  // };
 
   return (
     <section>
@@ -102,8 +125,7 @@ const FormikWrapper = ({
               </Row>
             </Container>
 
-            <ValueChangeListener />
-            <ErrorListener />
+            <AutoSubmitToken />
           </Form>
         )}
       </Formik>

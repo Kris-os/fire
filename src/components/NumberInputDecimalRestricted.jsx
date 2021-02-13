@@ -1,4 +1,5 @@
 import React from "react";
+import { Form } from "react-bootstrap";
 
 function NumberInputDecimalRestricted({
   decimals,
@@ -20,7 +21,7 @@ function NumberInputDecimalRestricted({
   }
 
   return (
-    <input
+    <Form.Control
       name={name}
       onBlur={onBlur}
       type="number"
