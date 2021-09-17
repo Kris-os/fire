@@ -28,7 +28,7 @@ const resultsInitial = {
   },
 };
 
-function Toolkit() {
+function OneOffModelling() {
   const debounceTime = 650;
   const debugMode = false;
   let unid = "";
@@ -140,4 +140,4 @@ function Toolkit() {
   );
 }
 
-export default Toolkit;
+export default OneOffModelling;

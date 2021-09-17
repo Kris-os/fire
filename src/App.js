@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Toolkit from "./components/Toolkit";
+import OneOffModelling from "./components/OneOffModelling";
 import Header from "./components/Header";
 import Homepage from "./components/Homepage";
 import AboutPage from "./components/AboutPage";
@@ -24,8 +24,11 @@ function App() {
             path="/home"
             render={() => <Homepage setActivePage={setActivePage} />}
           />
-          <Route path={"/" + consts.toolkitPageId} component={Toolkit} />
-          <Route path={"/about"} component={AboutPage} />
+          <Route
+            path={"/" + consts.oneOffModellingPageId}
+            component={OneOffModelling}
+          />
+          <Route path={"/" + consts.aboutPageId} component={AboutPage} />
         </Switch>
       </div>
     </HashRouter>

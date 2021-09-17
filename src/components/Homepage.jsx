@@ -6,7 +6,7 @@ import * as consts from "../Constants.js";
 function Homepage({ setActivePage }) {
   const clickHandler = () => {
     console.log("test");
-    setActivePage(consts.toolkitPageId);
+    setActivePage(consts.oneOffModellingPageId);
   };
 
   return (
@@ -49,8 +49,8 @@ function Homepage({ setActivePage }) {
                 than this
               </text>{" "}
               - find out exactly how soon by using our{" "}
-              <Link to={"/" + consts.toolkitPageId}>toolkit</Link>, and answer
-              other questions such as:
+              <Link to={"/" + consts.oneOffModellingPageId}>toolkit</Link>, and
+              answer other questions such as:
               <br />
               <br />
               <ul className="italic">
@@ -68,7 +68,7 @@ function Homepage({ setActivePage }) {
                 justifyContent: "center",
               }}
             >
-              <Link to={"/" + consts.toolkitPageId}>
+              <Link to={"/" + consts.oneOffModellingPageId}>
                 <Button variant="primary" size="lg" onClick={clickHandler}>
                   Go to toolkit
                 </Button>
