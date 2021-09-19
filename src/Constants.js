@@ -19,3 +19,4 @@ export const debounce = (func, wait) => {
 export const homePageId = "home";
 export const oneOffModellingPageId = "one-off-modelling";
 export const aboutPageId = "about";
+export const toolkitPageId = "toolkit";

@@ -38,8 +38,16 @@ function Header({ activePage, setActivePage }) {
             <NavLink
               activePage={activePage}
               setActivePage={setActivePage}
+              pageId={consts.toolkitPageId}
+              pageName="Toolkit"
+            />
+          </Nav.Item>
+          <Nav.Item>
+            <NavLink
+              activePage={activePage}
+              setActivePage={setActivePage}
               pageId={consts.oneOffModellingPageId}
-              pageName="One off modelling"
+              pageName="One-off"
             />
           </Nav.Item>
           <Nav.Item>
